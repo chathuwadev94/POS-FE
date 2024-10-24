@@ -1,0 +1,45 @@
+@import '../../../assets/styles/variable';
+
+:host ::ng-deep .p-menubar {
+  background-color: transparent;
+  margin-bottom: 10px;
+  height: 75px;
+}
+
+
+::ng-deep .custom-menubar {
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .p-menuitem-icon {
+  color:$major-color;
+}
+
+::ng-deep .p-menuitem-text {
+  color: black;
+}
+
+::ng-deep .p-button-text {
+  color: #020202;
+}
+
+::ng-deep .avatar {
+  .p-avatar-icon {
+    color: white;
+  }
+
+  .p-avatar {
+    background-color: $major-color;
+  }
+}
+
+
+.logo {
+  font-family:'Segoe UI', Tahoma,;
+  color: $major-color;
+  text-shadow: 1px 1px 2px rgba(6, 79, 38, 0.4);
+  font-weight: bolder;
+  font-size: 30px;
+  height: 40px;
+  margin: 0px;
+}

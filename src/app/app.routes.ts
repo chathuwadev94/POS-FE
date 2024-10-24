@@ -1,14 +1,18 @@
 import { Routes } from '@angular/router';
-import { AuthLayoutComponent } from './theme/auth-layout/auth-layout.component';
-import { AdminLayoutComponent } from './theme/admin-layout/admin-layout.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
     {
         path: 'auth',
         loadComponent: () => import('./theme/auth-layout/auth-layout.component').then(c => c.AuthLayoutComponent),
-        children:[
+        children: [
             {
-                path: 'signin',
+                path: '',
+                redirectTo: 'sign-in',
+                pathMatch: 'full'
+            },
+            {
+                path: 'sign-in',
                 loadComponent: () => import('./pages/sign-in/sign-in.component').then(c => c.SignInComponent)
             }
         ]
@@ -16,6 +20,7 @@ export const routes: Routes = [
     {
         path: '',
         loadComponent: () => import('./theme/admin-layout/admin-layout.component').then(c => c.AdminLayoutComponent),
+        // canActivate: [authGuard],
         children: [
             {
                 path: '',

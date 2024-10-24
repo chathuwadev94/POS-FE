@@ -1,1 +1,50 @@
-<p>sign-in works!</p>
+<div class="signin-body">
+    <div class="grid col-12">
+        <div class="col-6  lg:col-4"></div>
+
+        <div class="col-12 flex justify-content-center lg:col-4">
+
+            <div class="flex flex-column justify-content-center align-items-center  mid-col">
+                <div class="flex justify-content-center align-items-center" style="height: 150px;">
+                </div>
+                <div class="flex justify-content-center align-items-center">
+                    <h1 class="logo">{{shopName}}</h1>
+                </div>
+                <div class="flex justify-content-center align-items-center m-6">
+                    <p-card styleClass="outer-card" [style]="{ 'background-color': 'white' }">
+                        <div class="flex justify-content-center label">
+                            <h1>Log In</h1>
+                        </div>
+                        <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+                            <div class="field">
+                                <label class="auth-label block">Username</label>
+                                <input id="username-input" formControlName="username" name="username" type="text"
+                                    class="p-inputtext auth-input w-full" pInputText />
+                                <small *ngIf="f.username.errors && f.username.touched && f.username.invalid"
+                                    class="p-invalid">
+                                    <div *ngIf="f.username.errors.required" class="error-msg">User Name is required
+                                    </div>
+                                </small>
+                            </div>
+                            <div class="field ">
+                                <label class="auth-label block">Password</label>
+                                <p-password id="password-input" class="custom-password-input" [toggleMask]="true"
+                                    [feedback]="false" formControlName="password"></p-password>
+                                <small *ngIf="f.password.errors && f.password.touched && f.password.invalid"
+                                    class="p-invalid">
+                                    <div *ngIf="f.password.errors.required" class="error-msg">Password is required</div>
+                                </small>
+                            </div>
+                            <div class="flex align-items-center justify-content-center">
+                                <button pButton class="form-button signin-btn w-full" type="submit"
+                                    label="Sign In"></button>
+                            </div>
+                        </form>
+                    </p-card>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12  lg:col-4"></div>
+    </div>
+</div>

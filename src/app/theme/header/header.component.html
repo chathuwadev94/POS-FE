@@ -1,1 +1,40 @@
-<p>header works!</p>
+<p-menubar styleClass="custom-menubar">
+    
+    <ng-template pTemplate="start">
+        <div class="flex flex-column sm:flex-row">
+            <div class="flex align-items-center justify-content-center">
+                <button #btn type="button" pButton icon="pi pi-list" class="p-button-text" (click)="sidebar()"></button>
+            </div>
+            <div class="flex align-items-center justify-content-center">
+                <h1 class="logo">{{shopName}}</h1>
+            </div>
+        </div>
+    </ng-template>
+
+
+    <ng-template pTemplate="end">
+        <div class="flex justify-content-center align-items-center">
+            <ul class="topbar-menu">
+                <li>
+                    <div class="flex">
+                        <div class="flex justify-content-center align-items-center">
+                            <p-avatar class="avatar" icon="pi pi-user" styleClass="mr-2" shape="circle"
+                                size="large"></p-avatar>
+                        </div>
+                        <div class="flex justify-content-center align-items-center">
+                            <span>Hi</span>
+                            <span class="topbar-name" *ngIf="loggedInUser?.firstName"
+                                (click)="menu.toggle($event)">{{loggedInUser?.firstName | titlecase}} </span>
+                        </div>
+                        <div class="flex justify-content-center">
+                            <p-tieredMenu #menu [model]="items" [popup]="true" class="topbar-dropdown"></p-tieredMenu>
+                            <button #btn type="button" pButton icon="pi pi-fw pi-angle-down" class="p-button-text"
+                                (click)="menu.toggle($event)"></button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ng-template>
+</p-menubar>
+<app-sidebar [(sidebarVisible)]="sidebarVisible"></app-sidebar>

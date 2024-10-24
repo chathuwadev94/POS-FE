@@ -3,6 +3,8 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { PrimengModule } from '../../core/modules/primeng/primeng.module';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-admin-layout',
@@ -12,10 +14,13 @@ import { FooterComponent } from '../footer/footer.component';
     RouterOutlet,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent],
+    FooterComponent,
+    PrimengModule,
+    ButtonModule
+  ],
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.scss'
 })
 export class AdminLayoutComponent {
-
+  sidebarVisible: boolean = false;
 }
