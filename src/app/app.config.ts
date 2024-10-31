@@ -3,7 +3,24 @@ import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { apiBaseUrlInterceptor } from './core/interceptors/api-base-url.interceptor';
+import { responseBodyFormatInterceptor } from './core/interceptors/response-body-format.interceptor';
+import { provideState, provideStore } from '@ngrx/store';
+import { userReducer } from './core/state/user/user.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { UserEffect } from './core/state/user/user.efffects';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideAnimations()]
+  providers: [
+    provideRouter(routes), 
+    provideAnimations(),
+     provideHttpClient(withInterceptors([
+    apiBaseUrlInterceptor,
+    responseBodyFormatInterceptor
+  ])),
+  provideStore(),
+  provideState({ name: 'userState', reducer: userReducer }),
+  provideEffects(UserEffect)
+  ]
 };

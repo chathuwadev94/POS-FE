@@ -20,7 +20,7 @@ export const routes: Routes = [
     {
         path: '',
         loadComponent: () => import('./theme/admin-layout/admin-layout.component').then(c => c.AdminLayoutComponent),
-        // canActivate: [authGuard],
+        canActivate: [authGuard],
         children: [
             {
                 path: '',

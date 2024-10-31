@@ -1,6 +1,8 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, DoCheck, model } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, DoCheck, model, inject } from '@angular/core';
 import { PrimengModule } from '../../core/modules/primeng/primeng.module';
 import { MenuItem } from 'primeng/api';
+import { Route, Router } from '@angular/router';
+import { UserStore } from '../../core/signal-store/user.store';
 
 @Component({
     selector: 'app-sidebar',
@@ -15,21 +17,35 @@ export class SidebarComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
 
     sidebarVisible = model(false);
     items: MenuItem[] = [];
-    shopName:string='K Super Mart'
+    shopName: string = 'K Super Mart'
+    readonly uStore = inject(UserStore);
 
-    ngOnChanges(changes: SimpleChanges): void {
+    constructor(private readonly router: Router) { }
+
+    ngOnChanges(changes: SimpleChanges,): void {
     }
-    
+
 
     ngOnInit(): void {
+        this.sideBar();
+    }
+
+    sideBar() {
         this.items = [
             {
                 label: 'Casheir',
-                icon: 'pi pi-desktop'
+                icon: 'pi pi-desktop',
+                command: () => {
+                    this.router.navigate(['terminal']);
+                    this.sidebarVisible.set(false);
+                },
             },
             {
                 label: 'Dashboard',
                 icon: 'pi pi-chart-line',
+                command: () => {
+                    this.router.navigate(['auth']);
+                }
             },
             {
                 label: 'Warehouse',
