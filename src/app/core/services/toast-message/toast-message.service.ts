@@ -10,7 +10,7 @@ export class ToastMessageService {
   constructor() { }
 
   addNotification(severity: string, message: string) {
-    this.subject.next({ severity: severity, message: message })
+    this.subject.next({ severity: severity, detail: message })
   }
 
   getNotification(): Observable<any> {

@@ -1,0 +1,43 @@
+@import '../../../assets/styles/variable';
+
+.header-layout {
+        flex: 0 0 auto;
+}
+
+.body-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 86vh;
+    /* Ensure the body fills the viewport height */
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.side-bar-layout {
+    min-width: 260px;
+    min-height: 87vh;
+    background-color:#232524;
+    margin: 0%;
+    padding-top: 3px;
+    box-shadow: 4px 4px 4px rgba(83, 82, 82, 0.1);
+}
+
+
+.content-layout {
+    width: 1700px;
+}
+
+.footer-layout {
+    background-color: $major-color;
+    box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.1), 2px 0px 4px rgba(0, 0, 0, 0.1);
+    /* Add shadows to left and right */
+}
+
+
+
+:host ::ng-deep .p-card-content {
+    padding: 0px;   
+}

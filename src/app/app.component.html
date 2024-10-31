@@ -1,1 +1,8 @@
 <router-outlet />
+<p-toast />
+<p-dialog [(visible)]="display" [showHeader]="false" [resizable]="false" [modal]="true" [focusOnShow]="false"
+    [baseZIndex]="12000">
+    <div class="progress-spinner">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</p-dialog>
