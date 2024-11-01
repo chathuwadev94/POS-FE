@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { RoleGuard } from './core/guards/role.guard';
+import { Role } from './core/enums/auth/role.enum';
 
 export const routes: Routes = [
     {
@@ -29,8 +31,35 @@ export const routes: Routes = [
             },
             {
                 path: 'terminal',
-                loadComponent: () => import('./pages/payment-terminal/payment-terminal.component').then(c => c.PaymentTerminalComponent)
+                loadComponent: () => import('./pages/payment-terminal/payment-terminal.component').then(c => c.PaymentTerminalComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.DEFAULT, Role.CASHIRE]
+                }
+            },
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./pages/dashboard/dashboard.component').then(c => c.DashboardComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.DEFAULT, Role.CASHIRE]
+                }
             }
         ]
+    },
+    {
+        path: '**',
+        children: [
+            {
+                path: '**',
+                redirectTo: '404',
+                pathMatch: 'full'
+            },
+            {
+                path: '404',
+                loadComponent: () => import('./pages/404/notfound.component').then(c => c.NotfoundComponent)
+            },
+        ]
+
     }
 ];

@@ -17,8 +17,9 @@ import { AsyncPipe } from '@angular/common';
 import { UserStore } from '../../core/signal-store/user.store';
 import { ToastMessageService } from '../../core/services/toast-message/toast-message.service';
 import { SpinnerService } from '../../core/services/toast-message/spinner.service';
+import { environment } from '../../../environments/environment.development';
 
-const authCookieName = 'AUTH_USER';
+
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -35,7 +36,7 @@ const authCookieName = 'AUTH_USER';
 export class SignInComponent implements OnInit {
 
   signInForm: FormGroup = new FormGroup({});
-  shopName:string = 'K Super Mart';
+  shopName: string = 'K Super Mart';
   loggedInUser = signal<ILoginResponse | undefined>(undefined)
   user$!: Observable<IUser | undefined>;
 
@@ -103,7 +104,7 @@ export class SignInComponent implements OnInit {
             let accessTokenResponse: ILoginResponse = response;
             this.userStore.setUser(response)
             accessTokenResponse.isLoggedIn = true;
-            this.cookieManageService.setCookie(authCookieName, accessTokenResponse);
+            this.cookieManageService.setCookie(environment.cookies.authCookieName, accessTokenResponse);
             this.loggedInUser.set(accessTokenResponse);
             this.toastMessageService.addNotification('success', 'Logged in successfully');
             this.router.navigateByUrl('terminal');

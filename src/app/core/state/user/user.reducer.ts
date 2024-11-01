@@ -4,13 +4,13 @@ import * as userAction from './user.action';
 
 export interface IUserState {
     user?: IUser;
-  }
+}
 
 export const userState: IUserState = {}
 
 export const userReducer = createReducer(
     userState,
-    on(userAction.setLoggedInUser, (state,{user}) => ({
+    on(userAction.setLoggedInUser, (state, { user }) => ({
         ...state,
         user
     }))

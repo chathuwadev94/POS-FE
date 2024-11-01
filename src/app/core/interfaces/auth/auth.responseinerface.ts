@@ -11,5 +11,5 @@ export interface ILoginResponse {
     status?: number,
     accessToken?: string;
     refreshToken?: string;
-    isLoggedIn?:boolean;
+    isLoggedIn?: boolean;
 }

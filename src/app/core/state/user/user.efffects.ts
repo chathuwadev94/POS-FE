@@ -5,8 +5,8 @@ import { catchError, exhaustMap, map, of, tap } from "rxjs";
 import * as userAction from "./user.action"
 import { CookieManageService } from "../../services/cookie/cookie-manage.service";
 import { Router } from "@angular/router";
+import { environment } from "../../../../environments/environment.development";
 
-const authCookieName = 'AUTH_USER';
 
 @Injectable()
 export class UserEffect {
@@ -15,7 +15,7 @@ export class UserEffect {
         private actions$: Actions,
         private authService: AuthService,
         private readonly cookieManageService: CookieManageService,
-        private readonly router:Router
+        private readonly router: Router
     ) { }
 
     $login = createEffect(
@@ -23,8 +23,8 @@ export class UserEffect {
             ofType(userAction.userSignIn),
             exhaustMap(action => this.authService.singIn(action.loginDto).pipe(
                 tap(res => {
-                    res.isLoggedIn=true;
-                    this.cookieManageService.setCookie(authCookieName, res);
+                    res.isLoggedIn = true;
+                    this.cookieManageService.setCookie(environment.cookies.authCookieName, res);
                     this.router.navigateByUrl('terminal');
                 }),
                 map(user => userAction.setLoggedInUser({ user: user }))

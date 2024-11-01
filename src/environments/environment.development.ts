@@ -4,5 +4,8 @@ export const environment = {
     services :{
         auth:'auth',
         user: 'user'
+    },
+    cookies:{
+        authCookieName : 'AUTH_USER'
     }
 };
