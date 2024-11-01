@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { CookieManageService } from '../services/cookie/cookie-manage.service';
 
-const authCookieName = 'AUTH_USER';
+const authCookieName = 'AUTH_USER'; 
 export const authGuard: CanActivateFn = (route, state) => {
   const cookieManageService = inject(CookieManageService)
   const router = inject(Router);

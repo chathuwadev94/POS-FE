@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AuthService } from '../../core/services/http/auth/auth.service';
 
 @Component({
   selector: 'app-payment-terminal',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './payment-terminal.component.html',
   styleUrl: './payment-terminal.component.scss'
 })
-export class PaymentTerminalComponent {
+export class PaymentTerminalComponent implements OnInit {
 
+  // authService = inject(AuthService);
+  constructor(
+    private readonly authService: AuthService
+  ) { }
+
+  ngOnInit(): void {
+    this.authService.getLoggedInUser().subscribe(res => console.log(res));
+  }
 }

@@ -103,7 +103,7 @@ export class SignInComponent implements OnInit {
             let accessTokenResponse: ILoginResponse = response;
             this.userStore.setUser(response)
             accessTokenResponse.isLoggedIn = true;
-            this.cookieManageService.setCookie(authCookieName, accessTokenResponse);
+            this.cookieManageService.setCookie(authCookieName, accessTokenResponse); 
             this.loggedInUser.set(accessTokenResponse);
             this.toastMessageService.addNotification('success', 'Logged in successfully');
             this.router.navigateByUrl('terminal');

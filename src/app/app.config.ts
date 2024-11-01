@@ -10,6 +10,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { userReducer } from './core/state/user/user.reducer';
 import { provideEffects } from '@ngrx/effects';
 import { UserEffect } from './core/state/user/user.efffects';
+import { tokenAttachInterceptor } from './core/interceptors/tocken-attach.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
      provideHttpClient(withInterceptors([
     apiBaseUrlInterceptor,
-    responseBodyFormatInterceptor
+    responseBodyFormatInterceptor,
+    tokenAttachInterceptor
   ])),
   provideStore(),
   provideState({ name: 'userState', reducer: userReducer }),

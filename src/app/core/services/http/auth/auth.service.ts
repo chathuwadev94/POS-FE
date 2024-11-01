@@ -44,5 +44,10 @@ export class AuthService extends BaseService {
     return this.http.patch(`${AUTH_URL}/${id}/reset-password`, {}).pipe(take(1));
   }
 
+  //get loggedin user
+  getLoggedInUser(): Observable<IUser> {
+    return this.http.get(`${USER_URL}/logedIn`, {}).pipe(take(1));
+  }
+
 
 }
