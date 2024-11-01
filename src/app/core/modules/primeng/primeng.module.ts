@@ -102,6 +102,6 @@ const primeItems = [
   imports: [
     CommonModule
   ],
-  exports:[primeItems]
+  exports: [primeItems]
 })
 export class PrimengModule { }

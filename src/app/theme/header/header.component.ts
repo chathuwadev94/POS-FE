@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject, signal } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { PrimengModule } from '../../core/modules/primeng/primeng.module';
 import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -13,7 +13,8 @@ import { AsyncPipe } from '@angular/common';
 import { UserStore } from '../../core/signal-store/user.store';
 import { CookieManageService } from '../../core/services/cookie/cookie-manage.service';
 import { Router } from '@angular/router';
-const authCookieName = 'AUTH_USER';
+import { environment } from '../../../environments/environment.development';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -28,11 +29,10 @@ const authCookieName = 'AUTH_USER';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+
   items: MenuItem[] = [];
-  // loggedInUser?: ILoginResponse;
   loggedInUser?: any;
   sidebarVisible: boolean = false;
-  shopName: string = 'K Super Mart';
   user$!: Observable<IUser | undefined>;
 
   readonly uStore = inject(UserStore);
@@ -49,6 +49,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUser = this.stateService.loggedInUser();
+    this.dropdown();
+
+  }
+
+  sidebar(): void {
+    this.sidebarVisible = true;
+  }
+
+  dropdown() {
     this.items = [
       {
         label: 'Profile',
@@ -65,12 +74,8 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  sidebar(): void {
-    this.sidebarVisible = true;
-  }
-
   logout(): void {
-    this.cookieManageService.deleteCookie(authCookieName);
+    this.cookieManageService.deleteCookie(environment.cookies.authCookieName);
     this.router.navigateByUrl('auth');
   }
 }

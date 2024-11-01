@@ -42,7 +42,7 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/dashboard/dashboard.component').then(c => c.DashboardComponent),
                 canActivate: [RoleGuard],
                 data: {
-                    roles: [Role.DEFAULT,Role.CASHIRE]
+                    roles: [Role.DEFAULT, Role.CASHIRE]
                 }
             }
         ]

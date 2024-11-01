@@ -1,11 +1,13 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, DoCheck, model, inject } from '@angular/core';
+import { Component, OnInit, model, inject } from '@angular/core';
 import { PrimengModule } from '../../core/modules/primeng/primeng.module';
 import { MenuItem } from 'primeng/api';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserStore } from '../../core/signal-store/user.store';
 import { Role } from '../../core/enums/auth/role.enum';
 import { CookieManageService } from '../../core/services/cookie/cookie-manage.service';
-const authCookieName = 'AUTH_USER';
+import { environment } from '../../../environments/environment.development';
+
+
 @Component({
     selector: 'app-sidebar',
     standalone: true,
@@ -15,25 +17,22 @@ const authCookieName = 'AUTH_USER';
     templateUrl: './sidebar.component.html',
     styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
+export class SidebarComponent implements OnInit {
 
     sidebarVisible = model(false);
     items: MenuItem[] = [];
-    shopName: string = 'K Super Mart'
     readonly uStore = inject(UserStore);
     cookieManageService = inject(CookieManageService);
 
     constructor(private readonly router: Router) { }
 
-    ngOnChanges(changes: SimpleChanges,): void {
-    }
-
-
+    
     ngOnInit(): void {
         this.sideBar();
     }
+
     sideBarTabVisible = (acceptedRoles: string[]): boolean => {
-        const userRoles: string[] = this.cookieManageService.getCookie(authCookieName).roles;
+        const userRoles: string[] = this.cookieManageService.getCookie(environment.cookies.authCookieName).roles;
         if (userRoles && userRoles.length > 0) {
             let isExist: string[] = userRoles.filter(r => acceptedRoles.includes(r));
             if (isExist.length > 0) {
@@ -149,10 +148,4 @@ export class SidebarComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
         return this.items.every((menuItem) => menuItem.expanded);
     }
 
-    ngDoCheck(): void {
-    }
-
-    ngOnDestroy(): void {
-
-    }
 }

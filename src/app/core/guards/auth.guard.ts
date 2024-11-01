@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { CookieManageService } from '../services/cookie/cookie-manage.service';
+import { environment } from '../../../environments/environment.development';
 
-const authCookieName = 'AUTH_USER'; 
 export const authGuard: CanActivateFn = (route, state) => {
   const cookieManageService = inject(CookieManageService)
   const router = inject(Router);
   try {
     let isLoggedIn: boolean = false;
-    isLoggedIn = cookieManageService.getCookie(authCookieName).isLoggedIn;
+    isLoggedIn = cookieManageService.getCookie(environment.cookies.authCookieName).isLoggedIn;
     if (isLoggedIn) {
       return true;
     }

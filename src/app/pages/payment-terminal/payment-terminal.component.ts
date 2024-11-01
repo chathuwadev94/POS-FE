@@ -10,10 +10,8 @@ import { AuthService } from '../../core/services/http/auth/auth.service';
 })
 export class PaymentTerminalComponent implements OnInit {
 
-  // authService = inject(AuthService);
-  constructor(
-    private readonly authService: AuthService
-  ) { }
+  authService = inject(AuthService);
+  constructor() { }
 
   ngOnInit(): void {
     this.authService.getLoggedInUser().subscribe(res => console.log(res));

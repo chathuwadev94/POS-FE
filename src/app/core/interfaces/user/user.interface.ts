@@ -11,7 +11,7 @@ export interface IUser {
     password?: string;
     status?: number;
     contacts?: IContacts[];
-    showroom?:IShowroom
+    showroom?: IShowroom
 }
 
 
@@ -20,7 +20,7 @@ export interface IContacts {
 }
 
 
-export interface IShowroom  {
+export interface IShowroom {
     name?: string;
     address?: string;
     warehouseId?: number;

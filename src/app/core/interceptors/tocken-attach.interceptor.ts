@@ -4,12 +4,12 @@ import { CookieManageService } from '../services/cookie/cookie-manage.service';
 import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastMessageService } from '../services/toast-message/toast-message.service';
-const authCookieName = 'AUTH_USER';
+import { environment } from '../../../environments/environment.development';
 
 
 export const tokenAttachInterceptor: HttpInterceptorFn = (req, next) => {
   const cookie = inject(CookieManageService);
-  const user = cookie.getCookie(authCookieName);
+  const user = cookie.getCookie(environment.cookies.authCookieName);
   const router = inject(Router)
   const messageServ = inject(ToastMessageService)
   if (user) {

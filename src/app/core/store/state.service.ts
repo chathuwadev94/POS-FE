@@ -7,8 +7,9 @@ import { ILoginResponse } from '../interfaces/auth/auth.responseinerface';
 import { CookieManageService } from '../services/cookie/cookie-manage.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Route, Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
-const authCookieName = 'AUTH_USER';
+
 export interface IState {
   user: IUser;
   isAuthenticated: boolean;
@@ -34,7 +35,7 @@ export class StateService {
     private readonly authService: AuthService,
     @Inject(CookieManageService)
     private readonly cookieManageService: CookieManageService,
-    private readonly router:Router
+    private readonly router: Router
   ) { }
 
   setUser(user: IUser): void {
@@ -50,13 +51,13 @@ export class StateService {
     return this.authService.singIn(loginDto).pipe(
       take(1),
       tap((response: ILoginResponse) => {
-        response.isLoggedIn=true;
-        this.cookieManageService.setCookie(authCookieName, response);
+        response.isLoggedIn = true;
+        this.cookieManageService.setCookie(environment.cookies.authCookieName, response);
         // should set loggedin user
         this.setUser(response);
         this.setIsAuthenticate(true);
         this.router.navigateByUrl('terminal');
-        
+
       }),
       catchError((err: HttpErrorResponse) => {
         return of();
