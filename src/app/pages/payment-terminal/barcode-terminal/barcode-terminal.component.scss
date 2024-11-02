@@ -1,0 +1,143 @@
+@import '../../../../assets/styles/variable.scss';
+
+:host ::ng-deep {
+    .p-card {
+        width: 100%;
+        padding: 0rem;
+    }
+
+    .p-card-content {
+        padding: 0px;
+        padding-top: 10px;
+    }
+
+    .p-card .p-card-body {
+        padding: 0.2rem;
+    }
+
+    .transparent-card .p-card {
+        background-color: rgba(0, 0, 0, 0.8);
+        /* 50% opacity */
+    }
+
+    .field {
+        width: 100%;
+    }
+
+    .p-inputnumber {
+        margin-left: 5px;
+        margin-right: 5px;
+        display: block;
+    }
+
+    .p-inputtext {
+        margin-top: 3px;
+    }
+
+    .p-inputtext:hover {
+        background-color: #f0f0f0;
+        border-color: $major-color;
+    }
+
+    .p-inputtext:focus {
+        border-color: $major-color;
+        box-shadow: 0 0 5px $major-color;
+        outline: none;
+    }
+
+    .p-inputnumber-input {
+        width: 100%;
+    }
+
+
+
+    /* This ensures the input spans full width */
+    .block {
+        display: block;
+        width: 100%;
+    }
+}
+
+
+
+
+:host ::ng-deep {
+
+    /* Card styling */
+    .p-card {
+        width: 100%;
+        padding: 0rem;
+    }
+
+    .p-card-content {
+        padding: 0px;
+        padding-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .p-card .p-card-body {
+        padding: 0.2rem;
+    }
+
+    .transparent-card .p-card {
+        background-color: rgba(0, 0, 0, 0.8);
+        max-height: 200px;
+        /* 50% opacity */
+    }
+
+    /* Critical width controls */
+    .field {
+        width: 100%;
+
+    }
+
+    .p-autocomplete {
+        display: block;
+        width: 100%;
+    }
+
+    .p-autocomplete-input {
+        width: 100%;
+
+    }
+
+    /* Panel width to match input */
+    .p-autocomplete-panel {
+        width: 100%;
+    }
+}
+
+
+:host ::ng-deep {
+
+    .scanner-transparent-card .p-card-content {
+        padding: 0px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .scanner-transparent-card .p-card {
+        background-color: rgba(0, 0, 0, 0.8);
+        max-height: 200px;
+        /* 50% opacity */
+    }
+
+    .scanner-container {
+        width: 100%;
+        height: 75px; // Adjust this value
+        overflow: hidden;
+    }
+
+    // Target the video element inside zxing-scanner
+    zxing-scanner video {
+        height: 180px !important; // Match container height
+        object-fit: cover;
+    }
+
+    // Optional: Adjust the preview window
+    zxing-scanner .scan-area {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}

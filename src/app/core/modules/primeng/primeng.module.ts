@@ -46,6 +46,8 @@ import { ChipModule } from 'primeng/chip';
 // import { ChartModule } from 'primeng/chart';
 import { BadgeModule } from 'primeng/badge';
 import { RippleModule } from 'primeng/ripple';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 const primeItems = [
   InputTextModule,
@@ -93,7 +95,9 @@ const primeItems = [
   TieredMenuModule,
   ChipModule,
   // ChartModule,
-  BadgeModule, RippleModule
+  BadgeModule, RippleModule,
+  FloatLabelModule,
+  AutoCompleteModule
 
 ]
 

@@ -1,1 +1,38 @@
-<p>payment-terminal works!</p>
+<div class="grid nested-grid">
+    <div class="col-12 md:col-12 lg:col-6 flex align-content-center">
+        <div class="grid" style="width: 100%;">
+            <div class="col-12">
+                <div  style="width: 100%; min-height: 200px;">
+                    <p-card class="terminal-p-card">
+                        <h1 class="flex justify-content-center align-items-center" style="width: 100%; min-height: 200px;">Item List</h1>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-12 flex justify-content-center">
+                <div class="align-content-center" style="width: 100%; min-height: 10px;">
+                    <p-card class="terminal-p-card">
+                        <app-barcode-terminal></app-barcode-terminal>
+                    </p-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-12 lg:col-6">
+        <div class="grid" style="width: 100%;">
+            <div class="col-12 flex justify-content-center">
+                <div style="width: 100%; min-height: 200px;">
+                    <p-card class="terminal-p-card">
+                        <h1 class="flex justify-content-center align-items-center" style="width: 100%; min-height: 200px;"> Total</h1>
+                    </p-card>
+                </div>
+            </div>
+            <div class="col-12 flex justify-content-center">
+                <div style="width: 100%; min-height: 200px;">
+                    <p-card class="terminal-p-card">
+                        <h1 class="flex justify-content-center align-items-center" style="width: 100%; min-height: 200px;">Action List</h1>
+                    </p-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

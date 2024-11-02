@@ -3,7 +3,9 @@ export const environment = {
     apiBaseUrl: 'http://localhost:3000/v1/',
     services :{
         auth:'auth',
-        user: 'user'
+        user: 'user',
+        stock:'stock',
+        item:'item'
     },
     cookies:{
         authCookieName : 'AUTH_USER'
