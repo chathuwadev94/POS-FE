@@ -1,0 +1,9 @@
+<div>
+    @for (item of cartStore.netCartList(); track item) {
+    <li>{{item.name}}</li>
+    <li>{{item.amount}}</li>
+    }
+
+    <h1>Total Items :{{cartStore.totalItemCount()}}</h1>
+    <h1>Total Quantity :{{cartStore.totalQuantity()}}</h1>
+</div>

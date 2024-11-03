@@ -11,6 +11,8 @@ import { SpinnerService } from '../../../core/services/toast-message/spinner.ser
 import { ToastMessageService } from '../../../core/services/toast-message/toast-message.service';
 import { catchError, of, take, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CartStore, ICartItem } from '../../../core/signal-store/cart.store';
+import { IStock } from '../../../core/interfaces/item/item-response.interface';
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -34,6 +36,7 @@ export class BarcodeTerminalComponent {
   };
   allowedFormats = [BarcodeFormat.QR_CODE, BarcodeFormat.EAN_13, BarcodeFormat.CODE_128, BarcodeFormat.DATA_MATRIX];
   destroyRef = inject(DestroyRef);
+  cartStore = inject(CartStore);
 
   constructor(
     private readonly stockServ: StockService,
@@ -48,7 +51,7 @@ export class BarcodeTerminalComponent {
 
   search(event: AutoCompleteCompleteEvent) {
     this.itemServ.getPaginatedItemByBcode({ ...this.filters, bcode: event.query }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
-      this.suggestions = res.data.data.map((item: any) => item.barcode.code)
+      this.suggestions = res.data.map((item: any) => item.barcode.code)
     })
   }
 
@@ -62,8 +65,19 @@ export class BarcodeTerminalComponent {
     let param = { barcode: this.selectedItem }
     this.spinnerServ.showSpinner(true);
     this.stockServ.getStockItemByBarcodea(param).pipe(
-      take(1),
-      tap(res => this.spinnerServ.showSpinner(false)),
+      tap(
+        (res: any) => {
+          this.spinnerServ.showSpinner(false)
+          let item: ICartItem = {
+            itemId: res.item.id,
+            name: res.item?.name,
+            stockId: res.id,
+            qty: 1,
+            unitPrice: res.unitPrice
+          }
+          this.cartStore.addItem(item);
+        }
+      ),
       catchError((err: HttpErrorResponse) => {
         this.spinnerServ.showSpinner(false);
         const message = err?.error?.message || 'Failed to Fetch!';
@@ -79,7 +93,18 @@ export class BarcodeTerminalComponent {
     let param = { barcode: result }
     this.stockServ.getStockItemByBarcodea(param).pipe(takeUntilDestroyed(this.destroyRef)).pipe(
       take(1),
-      tap(res => this.spinnerServ.showSpinner(false)),
+      tap((res: IStock) => {
+        this.spinnerServ.showSpinner(false)
+        let item: ICartItem = {
+          itemId: res.item.id,
+          name: res.item?.name,
+          stockId: res.id,
+          qty: 1,
+          unitPrice: res.unitPrice
+        }
+        this.cartStore.addItem(item);
+        this.toastMessageServ.addNotification('success', 'Item Scaned successfully...');
+      }),
       catchError((err: HttpErrorResponse) => {
         this.spinnerServ.showSpinner(false);
         const message = err?.error?.message || 'Failed to Fetch!';
