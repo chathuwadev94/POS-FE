@@ -42,6 +42,9 @@ export const CartStore = signalStore(
         totalQuantity: computed(() =>
             iCartItem().reduce((total, item) => total + item.qty, 0)
         ),
+        netAmmount: computed(() =>
+            iCartItem().reduce((total, item) => total + (item.qty * item.unitPrice), 0)
+        ),
         netCartList: computed(() => iCartItem().map((item: ICartItem) => ({ ...item, amount: item.qty * item.unitPrice })))
     }))
 

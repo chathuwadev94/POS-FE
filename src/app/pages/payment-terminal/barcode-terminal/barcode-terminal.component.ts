@@ -50,7 +50,14 @@ export class BarcodeTerminalComponent {
   }
 
   search(event: AutoCompleteCompleteEvent) {
-    this.itemServ.getPaginatedItemByBcode({ ...this.filters, bcode: event.query }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(res => {
+    this.itemServ.getPaginatedItemByBcode({ ...this.filters, bcode: event.query }).pipe(takeUntilDestroyed(this.destroyRef),
+      catchError((err: HttpErrorResponse) => {
+        this.spinnerServ.showSpinner(false);
+        const message = err?.error?.message || 'Failed to Fetch!';
+        this.toastMessageServ.addNotification('error', message);
+        return of();
+      })
+    ).subscribe(res => {
       this.suggestions = res.data.map((item: any) => item.barcode.code)
     })
   }

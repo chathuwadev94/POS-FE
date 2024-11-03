@@ -1,0 +1,42 @@
+@import '../../../../assets/styles/variable.scss';
+
+.card {
+    min-height: 540px;
+}
+
+:host ::ng-deep .p-button.p-button-success.p-button-outlined {
+    color: white;
+    border: 1px solid;
+    background-color: $major-color;
+    ;
+}
+
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined {
+    color: white;
+    border: 1px solid;
+    background-color: #ef4444;
+}
+
+:host ::ng-deep .p-datatable {
+
+    min-height: 540px;
+    background-color: rgba(0, 0, 0, 0.8);
+    
+
+    .p-datatable-thead>tr {
+       height: 2px;
+    }
+
+    .p-datatable-thead>tr>th {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .p-datatable-tbody>tr>td {
+        background-color: #ede8e8;
+        color: rgb(7, 7, 7);
+        padding: 0.25rem 1rem;
+        height: 20px;
+    }
+
+}
