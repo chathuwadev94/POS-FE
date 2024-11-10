@@ -5,9 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
+            "name": "ng serve",
             "request": "launch",
             "type": "chrome",
+            "preLaunchTask": "ng serve",
             "url": "http://localhost:4200",
         },
     ]

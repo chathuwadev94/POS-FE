@@ -1,0 +1,22 @@
+<div class="grid">
+  <div class="col-12 md:col-9 justify-content-center align-content-center">
+    <p-card class="transparent-card">
+      <div class="field">
+        <p-floatLabel>
+          <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions" (completeMethod)="search($event)"
+            class="block" (keydown.enter)="onKeydown($event)" />
+          <label for="number-input">Barcode</label>
+        </p-floatLabel>
+      </div>
+    </p-card>
+
+  </div>
+  <div class="col-12 md:col-3">
+    <p-card class="scanner-transparent-card">
+      <div class="scanner-container">
+        <zxing-scanner (camerasFound)="onCamerasFound($event)" (scanSuccess)="onBarcodeScanned($event)"
+          [formats]="allowedFormats"></zxing-scanner>
+      </div>
+    </p-card>
+  </div>
+</div>

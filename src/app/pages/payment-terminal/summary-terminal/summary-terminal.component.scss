@@ -1,0 +1,28 @@
+@import '../../../../assets/styles/variable.scss';
+
+:host ::ng-deep {
+
+    .summary-transparent-card .p-card {
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+    }
+
+
+}
+
+.summary-lbl {
+    color: white;
+    font-size: medium;
+    margin-left: 40px;
+}
+
+.n-ammount-lbl {
+    color: white;
+    font-size:xx-large;
+
+}
+
+.amount-lbl {
+    color: $major-color;
+    font-size:xx-large;
+}

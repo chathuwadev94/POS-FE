@@ -1,10 +1,20 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from '../../core/services/http/auth/auth.service';
+import { BarcodeTerminalComponent } from './barcode-terminal/barcode-terminal.component';
+import { PrimengModule } from '../../core/modules/primeng/primeng.module';
+import { ItemListTerminalComponent } from './item-list-terminal/item-list-terminal.component';
+import { SummaryTerminalComponent } from './summary-terminal/summary-terminal.component';
+import { ActionTerminalComponent } from './action-terminal/action-terminal.component';
 
 @Component({
   selector: 'app-payment-terminal',
   standalone: true,
-  imports: [],
+  imports: [
+    BarcodeTerminalComponent,
+    ItemListTerminalComponent,
+    SummaryTerminalComponent,
+    ActionTerminalComponent,
+    PrimengModule],
   templateUrl: './payment-terminal.component.html',
   styleUrl: './payment-terminal.component.scss'
 })
@@ -14,6 +24,5 @@ export class PaymentTerminalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.authService.getLoggedInUser().subscribe(res => console.log(res));
   }
 }

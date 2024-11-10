@@ -73,9 +73,10 @@ export class HeaderComponent implements OnInit {
       }
     ];
   }
-
+  
   logout(): void {
     this.cookieManageService.deleteCookie(environment.cookies.authCookieName);
+    localStorage.clear();
     this.router.navigateByUrl('auth');
   }
 }

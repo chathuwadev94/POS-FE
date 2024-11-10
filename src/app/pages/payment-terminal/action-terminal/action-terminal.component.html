@@ -1,0 +1,111 @@
+<div class="payment-container">
+  <p-card class="action-transparent-card">
+    <div class="panel-layout">
+      <div class="button-grid">
+        <button type="button" severity="success" label="Cash [F1]" pButton pRipple (click)="cashPayment()"></button>
+        <button type="button" severity="success" label="Card [F2]" pButton pRipple (click)="cashPayment()"></button>
+        <button type="button" severity="success" label="QR [F3]" pButton pRipple (click)="cashPayment()"></button>
+        <button type="button" severity="success" label="M1 [F4]" pButton pRipple (click)="memo(1)"></button>
+        <button type="button" severity="success" label="M2 [F5]" pButton pRipple (click)="memo(2)"></button>
+        <button type="button" severity="success" label="Clear [F12]" pButton pRipple
+          (click)="clearCartDialog()"></button>
+      </div>
+
+      <app-numpad class="numpad-section" (valueChange)="onNumpadValueChange($event)"
+        (enterPressed)="onNumpadEnter($event)">
+      </app-numpad>
+    </div>
+  </p-card>
+</div>
+
+<div (window:keydown)="onKeydown($event)">
+</div>
+
+<p-confirmDialog #cd>
+  <ng-template pTemplate="headless" let-message>
+    <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+      <div class="border-circle  inline-flex justify-content-center align-items-center h-6rem w-6rem">
+        <i class="pi pi-save text-5xl"></i>
+      </div>
+      <span class="font-bold text-2xl block mb-2 mt-4">
+        {{ message.header }}
+      </span>
+      <p class="mb-0">{{ message.message }}</p>
+      <div class="flex align-items-center gap-2 mt-4">
+        <button pButton label="Save" (click)="cd.accept()" class="w-8rem">
+        </button>
+        <button pButton label="Dispatch" (click)="cd.reject()" style="background-color: #ef4444;" class="dispatch ">
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog>
+
+
+<p-dialog [(visible)]="cashBalanceDialog" [style]="{ width: '450px' }" header="Payment Details" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="grid">
+      <div class="col-12">
+        <p-card class="summary-transparent-card ">
+          <h1 class="n-ammount-lbl">Net Amount :
+            <span class="amount-lbl">{{cartStore.netAmmount() | number: '1.2-2'}} LKR</span>
+          </h1>
+        </p-card>
+      </div>
+      <div class="col-12">
+        <p-card class="summary-transparent-card ">
+          <div class="flex flex-row m-2">
+            <h1 class="c-ammount-lbl justify-content-center">Cash Amount :</h1>
+            <div class="flex justify-content-center m-1">
+              <p-inputNumber id="quantity" currency="LKR" locale="en-US" [(ngModel)]="cashAmount" />
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" icon="pi pi-times" [text]="true" (onClick)="hideDialog()" />
+    <p-button label="Pay" icon="pi pi-check" [text]="true" (onClick)="payment()" />
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="closeTraDialog" [style]="{ width: '450px' }" header="Cash Balance" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="grid">
+      <div class="col-12">
+        <p-card class="summary-transparent-card ">
+          <h1 class="n-ammount-lbl">Cash Balance :
+            <span class="balance-lbl">{{cashBalance | number: '1.2-2'}} LKR</span>
+          </h1>
+        </p-card>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Pay" icon="pi pi-check" [text]="true" (onClick)="closeTransaction()" />
+  </ng-template>
+</p-dialog>
+
+<p-dialog [(visible)]="cartClearDialog" [style]="{ width: '450px' }" header="Clear Cart" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="grid">
+      <div class="col-12">
+        <p-card class="summary-transparent-card ">
+          <h1 class="n-ammount-lbl">Do you want to Cart Clear?..
+          </h1>
+        </p-card>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Clear" icon="pi pi-check" [text]="true" (onClick)="clearCart()" />
+  </ng-template>
+</p-dialog>

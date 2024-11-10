@@ -107,7 +107,8 @@ export class SignInComponent implements OnInit {
             this.cookieManageService.setCookie(environment.cookies.authCookieName, accessTokenResponse);
             this.loggedInUser.set(accessTokenResponse);
             this.toastMessageService.addNotification('success', 'Logged in successfully');
-            this.router.navigateByUrl('terminal');
+            // this.router.navigateByUrl('terminal');
+            this.router.navigate(['/terminal']);
             this.spinnerService.showSpinner(false);
           }),
           catchError((err: HttpErrorResponse) => {
