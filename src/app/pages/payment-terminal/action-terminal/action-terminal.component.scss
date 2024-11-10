@@ -22,13 +22,13 @@
   .button-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 1rem;
     height: 100%;
 
     button {
       width: 100%;
-      min-height: 150px;
+      min-height: 100px;
       /* Set minimum height */
       height: 100%;
       margin: 0;
@@ -63,5 +63,172 @@
         /* Adjusted for mobile */
       }
     }
+  }
+}
+
+
+:host ::ng-deep {
+
+  .summary-transparent-card .p-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 10px;
+    min-height: 100px;
+  }
+
+  .summary-transparent-card .p-card-body {
+    height: 100px;
+    min-width: 100px;
+  }
+
+
+
+}
+
+.summary-lbl {
+  color: white;
+  font-size: medium;
+  // margin-left: 10px;
+}
+
+.n-ammount-lbl {
+  color: white;
+  font-size: larger;
+  width: 300px;
+  height: fit-content;
+
+}
+
+.c-ammount-lbl {
+  color: white;
+  font-size: large;
+
+}
+
+.amount-lbl {
+  color: $major-color;
+  min-width: 200px;
+  font-size: xx-large;
+}
+
+
+:host ::ng-deep .p-inputtext {
+  .p-inputnumber-input {
+    width: 10px;
+    height: 10px;
+  }
+  width: 20px;
+}
+
+
+:host ::ng-deep .p-inputnumber {
+height: 45px;
+min-width: 200px;
+margin-right: 5px;
+}
+
+.balance-lbl {
+  color: $major-color;
+  min-width: 100px;
+  font-size: larger;
+}
+
+:host ::ng-deep .border-circle {
+  color: #22c55e;
+}
+
+:host ::ng-deep .p-button {
+
+  background-color: #22c55e;
+  color: white;
+
+  .dispatch {
+    background-color: red;
+    width: 100%;
+  }
+
+}
+
+
+.payment-container {
+  width: 100%;
+}
+
+.panel-layout {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+}
+
+.button-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+
+  button {
+    width: 100%;
+    min-height: 100px;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+.numpad-section {
+  width: 300px;
+  height: 100%;
+}
+
+:host ::ng-deep {
+  .action-transparent-card .p-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    min-height: 370px;
+
+    .p-card-body {
+      height: 100%;
+      padding: 1rem;
+    }
+
+    .p-card-content {
+      height: 100%;
+      padding: 0;
+    }
+  }
+
+  // .p-button {
+  //   height: 100% !important;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   background-color: #22c55e;
+
+  //   &:hover {
+  //     background-color: rgb(210, 227, 216);
+  //   }
+
+  //   .p-button-label {
+  //     color: white;
+  //     font-size: xx-large;
+  //   }
+  // }
+}
+
+@media screen and (max-width: 768px) {
+  .panel-layout {
+    flex-direction: column;
+  }
+
+  .button-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+
+    button {
+      min-height: 20px;
+    }
+  }
+
+  .numpad-section {
+    width: 100%;
   }
 }

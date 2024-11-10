@@ -5,9 +5,14 @@ export const environment = {
         auth:'auth',
         user: 'user',
         stock:'stock',
-        item:'item'
+        item:'item',
+        sale:'sale'
     },
     cookies:{
-        authCookieName : 'AUTH_USER'
+        authCookieName : 'AUTH_USER',
+       
+    },
+    localStorageKeys:{
+        cartKey:'CART'
     }
 };

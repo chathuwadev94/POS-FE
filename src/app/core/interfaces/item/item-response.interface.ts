@@ -36,3 +36,10 @@ export interface IStock {
     item: IItem;
     unitPrice: number;
 }
+
+export interface ISaleItemDetails {
+    itemId: number;
+    qty: number;
+    stockId:number;
+    unitPrice:number;
+}

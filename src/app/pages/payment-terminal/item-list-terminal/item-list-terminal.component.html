@@ -42,11 +42,11 @@
         <div class="formgrid grid">
             <div class="field col">
                 <label for="name">Product Name</label>
-                <input [disabled]="true" type="text" pInputText id="name" [(ngModel)]="item.name" required autofocus />
+                <input [disabled]="true" type="text" pInputText id="name" [(ngModel)]="selectedItem.name" required autofocus />
             </div>
             <div class="field col">
                 <label for="quantity">Quantity</label>
-                <p-inputNumber id="quantity" [(ngModel)]="item.qty" />
+                <p-inputNumber id="quantity" [(ngModel)]="newQty" />
             </div>
         </div>
     </ng-template>

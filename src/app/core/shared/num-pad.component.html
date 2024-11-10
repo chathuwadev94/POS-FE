@@ -1,0 +1,18 @@
+<div class="numpad-container">
+    <!-- <div class="display">{{ displayValue }}</div> -->
+    
+    <div class="numpad-grid">
+      <button *ngFor="let num of numbers" 
+              (click)="onButtonClick(num)"
+              class="numpad-button">
+        {{ num }}
+      </button>
+      
+      <button class="numpad-button" (click)="onButtonClick('.')">.</button>
+      <button class="numpad-button" (click)="onButtonClick('0')">0</button>
+      <button class="numpad-button clear" (click)="clear()">C</button>
+      
+      <button class="numpad-button enter" (click)="enter()">Enter</button>
+      <button class="numpad-button backspace" (click)="backspace()">←</button>
+    </div>
+  </div>

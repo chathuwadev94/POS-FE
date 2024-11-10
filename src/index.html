@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PosFe</title>
-  <base href="/">
+  <title>POS_FE</title>
+  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Updated Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" 
+    content="default-src 'self' http: https: ws: wss: data: 'unsafe-inline' 'unsafe-eval';
+             connect-src 'self' http: https: ws: wss:;
+             img-src 'self' data: http: https:;
+             style-src 'self' 'unsafe-inline' http: https:;
+             script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 </head>
 <body>
   <app-root></app-root>

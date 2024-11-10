@@ -1,12 +1,16 @@
 {
   "name": "pos-fe",
   "version": "0.0.0",
+  "main": "app.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "electron-build": "ng build --base-href ./",
+    "electron": "electron .",
+    "electron-dev": "rimraf dist && npm run electron-build && npm run electron"
   },
   "private": true,
   "dependencies": {
@@ -22,7 +26,9 @@
     "@ngrx/signals": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
+    "@types/jsbarcode": "^3.11.4",
     "@zxing/ngx-scanner": "^18.0.1",
+    "jsbarcode": "^3.11.6",
     "ngx-barcode-scanner": "^14.0.1",
     "ngx-cookie-service": "^17.1.0",
     "primeflex": "^3.3.1",
@@ -38,12 +44,15 @@
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
     "@types/jasmine": "~5.1.0",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "rimraf": "^6.0.1",
     "typescript": "~5.3.2"
   }
 }
