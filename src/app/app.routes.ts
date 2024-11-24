@@ -34,7 +34,7 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/payment-terminal/payment-terminal.component').then(c => c.PaymentTerminalComponent),
                 canActivate: [RoleGuard],
                 data: {
-                    roles: [Role.DEFAULT, Role.CASHIER]
+                    roles: [Role.SUPER_ADMIN, Role.DEFAULT, Role.CASHIER]
                 }
             },
             {
@@ -42,7 +42,7 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/dashboard/dashboard.component').then(c => c.DashboardComponent),
                 canActivate: [RoleGuard],
                 data: {
-                    roles: [Role.ADMIN]
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
                 }
             },
             {
@@ -50,7 +50,23 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/user/user.component').then(c => c.UserComponent),
                 canActivate: [RoleGuard],
                 data: {
-                    roles: [Role.ADMIN]
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
+                }
+            },
+            {
+                path: 'warehouse',
+                loadComponent: () => import('./pages/warehouse/warehouse/warehouse.component').then(c => c.WarehouseComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
+                }
+            },
+            {
+                path: 'showroom',
+                loadComponent: () => import('./pages/warehouse/showroom/showroom.component').then(c => c.ShowroomComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
                 }
             }
         ]

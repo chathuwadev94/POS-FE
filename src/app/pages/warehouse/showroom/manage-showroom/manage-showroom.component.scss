@@ -1,0 +1,81 @@
+@import '../../../../../assets/styles/variable.scss';
+
+:host .user-label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #060606;
+    font-weight: 300;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+:host ::ng-deep .air-model .p-dialog .p-dialog-header .p-dialog-title {
+    color: #ea1a1a;
+}
+
+:host ::ng-deep .usr-add-p-btn.p-button {
+    background-color: white;
+    color: $button-color;
+    border: 1px solid #232020;
+    width: 140px;
+}
+
+:host ::ng-deep .p-dropdown {
+    // width: 415px;
+    display: flex;
+    width: 100%;
+}
+
+
+:host ::ng-deep .p-multiselect {
+    display: flex;
+    width: 100%;
+}
+
+:host ::ng-deep .p-input-icon-right>.p-inputtext {
+    width: 415px;
+}
+
+:host ::ng-deep .p-password {
+    display: flex;
+    width: 100%;
+}
+
+:host ::ng-deep .p-multiselect .p-multiselect-label.p-placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    color: $button-color;
+}
+
+:host ::ng-deep .p-dropdown .p-dropdown-label.p-placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    color: $button-color;
+}
+
+:host ::ng-deep .p-inputtext {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #060606;
+}
+
+.required-lable {
+    color: #ea1a1a;
+}
+
+.error-msg {
+    color: #ea1a1a;
+}
+
+
+
+:host ::ng-deep .p-multiselect-panel .p-multiselect-items .p-multiselect-item {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #060606;
+}
+
+:host ::ng-deep .p-checkbox .p-checkbox-box.p-highlight {
+    background-color: $button-color;
+    background: $button-color;
+    border-color: #232020;
+}
+
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    color: $button-color;
+}

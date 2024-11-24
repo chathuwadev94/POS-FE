@@ -2,8 +2,8 @@
 
     <div class="card card-inner">
         <!-- table -->
-        <p-table #dt [value]="userList" [rows]="10" [globalFilterFields]="['title']" responsiveLayout="scroll"
-            [(selection)]="selectedUserList" [rowHover]="true" dataKey="id">
+        <p-table #dt [value]="showroomList" [rows]="10" [globalFilterFields]="['title']" responsiveLayout="scroll"
+            [(selection)]="selectedShowroomList" [rowHover]="true" dataKey="id">
 
             <!-- caption And Searchbar -->
             <ng-template pTemplate="caption">
@@ -15,7 +15,7 @@
                                 <span class="p-input-icon-left">
                                     <!-- <i class="pi pi-search"></i> -->
                                     <input #search [(ngModel)]="selectedKeyword" type="text" pInputText
-                                        placeholder="NIC" class="search w-12rem"
+                                        placeholder="Name" class="search w-12rem"
                                         (keyup.enter)="onEnterSearch(search.value)" />
                                 </span>
                             </div>
@@ -24,7 +24,7 @@
                             <p-button styleClass="action-btn" (onClick)="onClearSearch()" label="Clear"></p-button>
                         </div>
                         <div class="flex  justify-content-center ml-3">
-                            <p-button styleClass="action-btn" (onClick)="onAddUser()" label="Add User"></p-button>
+                            <p-button styleClass="action-btn" (onClick)="onAdd()" label="Create"></p-button>
                         </div>
 
                     </div>
@@ -36,44 +36,35 @@
             <!-- table Header -->
             <ng-template pTemplate="header">
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th pSortableColumn="title">NIC</th>
-                    <th pSortableColumn="campaignStatus">Contact</th>
-                    <th pSortableColumn="campaignStatus">Email</th>
-                    <th pSortableColumn="campaignStatus">Status</th>
-                    <th pSortableColumn="campaignStatus">Showroom</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th pSortableColumn="title">Warehouse</th>
+                    <th pSortableColumn="title">Warehouse Location</th>
                     <th class="action-col">Action</th>
                 </tr>
             </ng-template>
 
             <!-- table Body -->
-            <ng-template pTemplate="body" let-user>
+            <ng-template pTemplate="body" let-showroom>
                 <tr>
-                    <td>{{user.firstName | lowercase}}</td>
-                    <td>{{user.lastName}}</td>
-                    <td>{{user.nic}}</td>
-                    <td>{{user?.phoneNumber}}</td>
-                    <td>{{user?.email}}</td>
-                    <td class="campaign-status">
-                        <span [class]="'user-staus-'+(user.status)">
-                            {{(user?.status == 0) ? 'Pending':(user?.status == 1)?'Approved' :'Hold'}}
-                        </span>
-
-                    </td>
-                    <td>{{user?.showroom?.location}}</td>
+                    <td>{{showroom.id}}</td>
+                    <td>{{showroom.name}}</td>
+                    <td>{{showroom.location}}</td>
+                    <td>{{showroom.address}}</td>
+                    <td>{{showroom.phoneNumber}}</td>
+                    <td>{{showroom?.warehouse?.name}}</td>
+                    <td>{{showroom?.warehouse?.location}}</td>
                     <td>
 
                         <p-button pTooltip="View User" class="action-btn mr-2" icon="pi pi-eye" tooltipPosition="bottom"
-                            tooltipStyleClass="p-tooltip" life:4000 (onClick)="onViewUser(user)" [text]="true"
+                            tooltipStyleClass="p-tooltip" life:4000 (onClick)="onView(showroom)" [text]="true"
                             [raised]="true"></p-button>
                         <p-button pTooltip="Edit User" class="action-btn mr-2" icon="pi pi-pencil"
                             tooltipPosition="bottom" tooltipStyleClass="p-tooltip" life:4000
-                            (onClick)="onEditUser(user)" [text]="true" [raised]="true"></p-button>
-                        <p-button pTooltip="Reset Password" class="action-btn mr-2" icon="pi pi-refresh"
-                            tooltipPosition="bottom" tooltipStyleClass="p-tooltip" life:4000
-                            (onClick)="onViewUser(user)" [text]="true" [raised]="true"></p-button>
-
+                            (onClick)="onEdit(showroom)" [text]="true" [raised]="true"></p-button>
                     </td>
                 </tr>
             </ng-template>
@@ -81,7 +72,7 @@
         </p-table>
 
         <!-- pagination -->
-        <app-pagination [paginateOptions]="paginateOptions" [filters]="filters" (pageChanged)="fetchUserList()"
-            (pageLimitChanged)="fetchUserList()"></app-pagination>
+        <app-pagination [paginateOptions]="paginateOptions" [filters]="filters" (pageChanged)="fetchShowroomList()"
+            (pageLimitChanged)="fetchShowroomList()"></app-pagination>
     </div>
 </p-card>
