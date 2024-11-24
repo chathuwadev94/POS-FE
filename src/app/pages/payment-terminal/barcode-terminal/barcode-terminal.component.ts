@@ -96,7 +96,6 @@ export class BarcodeTerminalComponent {
   }
 
   onBarcodeScanned(result: string): void {
-    console.log('Barcode scanned:', result);
     let param = { barcode: result }
     this.stockServ.getStockItemByBarcodea(param).pipe(takeUntilDestroyed(this.destroyRef)).pipe(
       take(1),

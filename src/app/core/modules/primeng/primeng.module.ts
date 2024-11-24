@@ -48,6 +48,7 @@ import { BadgeModule } from 'primeng/badge';
 import { RippleModule } from 'primeng/ripple';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { PaginatorModule } from 'primeng/paginator';
 
 const primeItems = [
   InputTextModule,
@@ -97,7 +98,8 @@ const primeItems = [
   // ChartModule,
   BadgeModule, RippleModule,
   FloatLabelModule,
-  AutoCompleteModule
+  AutoCompleteModule,
+  PaginatorModule
 
 ]
 

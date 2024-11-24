@@ -47,7 +47,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Casheir',
                 icon: 'pi pi-desktop',
-                visible: this.sideBarTabVisible([Role.CASHIRE]),
+                visible: this.sideBarTabVisible([Role.CASHIER,Role.ADMIN]),
                 command: () => {
                     this.router.navigate(['terminal']);
                     this.sidebarVisible.set(false);
@@ -56,7 +56,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Dashboard',
                 icon: 'pi pi-chart-line',
-                visible: this.sideBarTabVisible([Role.DEFAULT,Role.CASHIRE]),
+                visible: this.sideBarTabVisible([Role.DEFAULT,Role.CASHIER,Role.ADMIN]),
                 command: () => {
                     this.router.navigate(['dashboard']);
                     this.sidebarVisible.set(false);
@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Warehouse',
                 icon: 'pi pi-home',
-                visible: this.sideBarTabVisible([Role.DEFAULT]),
+                visible: this.sideBarTabVisible([Role.ADMIN]),
                 items: [
                     {
                         label: 'Warehouse',
@@ -83,13 +83,17 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'User',
-                visible: this.sideBarTabVisible([Role.DEFAULT]),
+                visible: this.sideBarTabVisible([Role.ADMIN]),
                 icon: 'pi pi-user-edit',
+                command: () => {
+                    this.router.navigate(['user']);
+                    this.sidebarVisible.set(false);
+                }
             },
             {
                 label: 'Sale',
                 icon: 'pi pi-user',
-                visible: this.sideBarTabVisible([Role.DEFAULT]),
+                visible: this.sideBarTabVisible([Role.ADMIN]),
                 items: [
                     {
                         label: 'Sales',
@@ -104,7 +108,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Items',
                 icon: 'pi pi-user',
-                visible: this.sideBarTabVisible([Role.DEFAULT]),
+                visible: this.sideBarTabVisible([Role.ADMIN]),
                 items: [
                     {
                         label: 'Category',
@@ -118,12 +122,12 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'Customer',
-                visible: this.sideBarTabVisible([Role.DEFAULT]),
+                visible: this.sideBarTabVisible([Role.ADMIN]),
                 icon: 'pi pi-envelope',
             },
             {
                 label: 'Reports',
-                visible: this.sideBarTabVisible([Role.DEFAULT]),
+                visible: this.sideBarTabVisible([Role.ADMIN]),
                 icon: 'pi pi-envelope',
             }
         ];

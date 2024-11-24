@@ -1,0 +1,17 @@
+
+@import '../../../../assets/styles/variable.scss';
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+
+    background-color: $button-color;
+    color: white;
+
+}
+
+.paginate-lbl {
+    color: #232020;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-current {
+    color: #232020;
+}

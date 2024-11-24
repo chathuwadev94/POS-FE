@@ -6,7 +6,8 @@ export const environment = {
         user: 'user',
         stock:'stock',
         item:'item',
-        sale:'sale'
+        sale:'sale',
+        showroom:'showroom',
     },
     cookies:{
         authCookieName : 'AUTH_USER',

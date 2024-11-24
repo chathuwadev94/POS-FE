@@ -1,0 +1,166 @@
+<form [formGroup]="userForm" class="card card-inner padding-n col-padding-reset">
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-4">
+            <div class="flex flex-column">
+
+                <div class="field">
+                    <div class="user-label">First Name<span class="required-lable">*</span></div>
+                    <input formControlName="firstName" class="input-text auth-input w-full" id="firstName" type="text"
+                        pInputText />
+                    <small *ngIf="f.firstName.errors && f.firstName.touched && f.firstName.invalid" class="p-invalid">
+                        <div *ngIf="f.firstName.errors.required" class="error-msg">First Name is required</div>
+                    </small>
+                </div>
+
+                <div class="field">
+                    <div class="user-label">Last Name<span class="required-lable">*</span></div>
+                    <input formControlName="lastName" class="input-text auth-input w-full" id="lastName" type="text"
+                        pInputText />
+                    <small *ngIf="f.lastName.errors && f.lastName.touched && f.lastName.invalid" class="p-invalid">
+                        <div *ngIf="f.lastName.errors.required" class="error-msg">First Name is required</div>
+                    </small>
+                </div>
+                <div class="field">
+                    <div class="user-label">User Name<span class="required-lable">*</span></div>
+                    <input formControlName="userName" class="input-text auth-input w-full" id="userName" type="text"
+                        pInputText />
+                    <small *ngIf="f.userName.errors && f.userName.touched && f.userName.invalid" class="p-invalid">
+                        <div *ngIf="f.userName.errors.required" class="error-msg">User is required</div>
+                    </small>
+                </div>
+                <div class="field">
+                    <div class="user-label">Gender<span class="required-lable">*</span></div>
+                    <p-dropdown formControlName="gender" [options]="genders" optionValue="value" optionLabel="key"
+                        placeholder="Select a Gender"></p-dropdown>
+                    <small *ngIf="f.gender.errors && f.gender.touched && f.gender.invalid" class="p-invalid">
+                        <div *ngIf="f.gender.errors.required" class="error-msg">Gender is required</div>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 md:col-6 lg:col-4">
+            <div class="flex flex-column">
+                <div class="field">
+                    <div class="user-label">NIC<span class="required-lable">*</span></div>
+                    <input formControlName="nic" class="input-text auth-input w-full" id="nic" type="text" pInputText />
+                    <small *ngIf="f.nic.errors && f.nic.touched && f.nic.invalid" class="p-invalid">
+                        <div *ngIf="f.nic.errors.required" class="error-msg">NIC is required</div>
+                    </small>
+                </div>
+                <div class="field">
+                    <div class="user-label">Email<span class="required-lable">*</span></div>
+                    <input formControlName="email" class="input-text auth-input w-full" id="email" type="text"
+                        pInputText />
+                    <small *ngIf="f.email.errors && f.email.touched && f.email.invalid" class="p-invalid">
+                        <div *ngIf="f.email.errors.required" class="error-msg">Email is required</div>
+                    </small>
+                </div>
+                <div class="field">
+                    <div class="user-label">Address<span class="required-lable">*</span></div>
+                    <input formControlName="address" class="input-text auth-input w-full" id="address" type="text"
+                        pInputText />
+                    <small *ngIf="f.address.errors && f.address.touched && f.address.invalid" class="p-invalid">
+                        <div *ngIf="f.address.errors.required" class="error-msg">Address is required</div>
+                    </small>
+                </div>
+
+                <div class="field">
+                    <div class="user-label">Contacts<span class="required-lable">*</span></div>
+                    <input formControlName="contacts" class="input-text auth-input w-full" id="contacts" type="text"
+                        pInputText />
+                    <small *ngIf="f.contacts.errors && f.contacts.touched && f.contacts.invalid" class="p-invalid">
+                        <div *ngIf="f.contacts.errors.required" class="error-msg">Contact is required</div>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-12 md:col-6 lg:col-4">
+            <div class="flex flex-column">
+                <div class="field">
+                    <div class="user-label">Role<span class="required-lable">*</span></div>
+                    <p-multiSelect [options]="roles" formControlName="role" optionValue="value" optionLabel="key"
+                        placeholder="Select Roles"></p-multiSelect>
+                    <small *ngIf="f.role.errors && f.role.touched && f.role.invalid" class="p-invalid">
+                        <div *ngIf="f.role.errors.required" class="error-msg">Role is required</div>
+                    </small>
+                </div>
+                <div class="field">
+                    <div class="user-label">Status<span class="required-lable">*</span></div>
+                    <p-dropdown formControlName="status" optionValue="value" [options]="statusList" optionLabel="key"
+                        placeholder="Select a Status">
+                        <ng-template pTemplate="type" let-status>
+                            {{ status.key | titlecase }}
+                        </ng-template>
+                    </p-dropdown>
+                    <small *ngIf="f.status.errors && f.status.touched && f.status.invalid" class="p-invalid">
+                        <div *ngIf="f.status.errors.required" class="error-msg">Status is required</div>
+                    </small>
+                </div>
+
+                <div class="field">
+                    <div class="user-label">Showroom<span class="required-lable">*</span></div>
+                    <p-dropdown [options]="showroomList" formControlName="showroom"  [filter]="true" optionValue="id" optionLabel="location" 
+                        filterBy="location" [showClear]="true" placeholder="Select a Showroom">
+                    </p-dropdown>
+                    <small *ngIf="f.showroom.errors && f.showroom.touched && f.showroom.invalid" class="p-invalid">
+                        <div *ngIf="f.showroom.errors.required" class="error-msg">Showroom is required</div>
+                    </small>
+                </div>
+
+                <div class="field" *ngIf="isVisible">
+                    <div class="user-label">Password<span class="required-lable">*</span></div>
+                    <p-password id="password-input" class="custom-password-input" [toggleMask]="true" [feedback]="false"
+                        formControlName="password"></p-password>
+                    <small *ngIf="f.password.errors && f.password.touched && f.password.invalid" class="p-invalid">
+                        <div *ngIf="f.password.errors.required" class="error-msg">Password is required</div>
+                        <div *ngIf="f.password.errors.pattern" class="error-msg">Password must contain at least 1
+                            uppercase
+                            letter, lowercase letter,
+                            number, and must be at least 8 characters long</div>
+                    </small>
+                </div>
+                <div class="field" *ngIf="isVisible">
+                    <div class="user-label">Confirm Password<span class="required-lable">*</span></div>
+                    <p-password id="password-input" class="custom-password-input" [toggleMask]="true" [feedback]="false"
+                        formControlName="confirmPassword"></p-password>
+                    <small *ngIf="f.confirmPassword.errors && f.confirmPassword.touched && f.confirmPassword.invalid"
+                        class="p-invalid">
+                        <div *ngIf="f.confirmPassword.errors?.required" class="error-msg">Re-type Password required
+                        </div>
+                        <div *ngIf="f.confirmPassword.errors?.mustMatch" class="error-msg">Password don't match</div>
+                    </small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-footer">
+        <div class="grid">
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- cancel button -->
+                <div class="flex justify-content-center md:justify-content-start align-items-center w-full">
+                    <p-button (click)="onCancel()" label="Cancel " styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- save Button -->
+                <div class="flex justify-content-center md:justify-content-end w-full align-items-center"
+                    *ngIf="!isDisable">
+                    <p-button type="submit" (click)="saveInfo()" label="Save Info" icon="pi pi-save"
+                        styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
