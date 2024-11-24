@@ -1,0 +1,85 @@
+<form [formGroup]="sRoomForm" class="card card-inner padding-n col-padding-reset">
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-6">
+            <div class="flex flex-column">
+
+                <div class="field">
+                    <div class="user-label"> Name<span class="required-lable">*</span></div>
+                    <input formControlName="name" class="input-text auth-input w-full" id="name" type="text"
+                        pInputText />
+                    <small *ngIf="f.name.errors && f.name.touched && f.name.invalid" class="p-invalid">
+                        <div *ngIf="f.name.errors.required" class="error-msg"> Name is required</div>
+                    </small>
+                </div>
+
+                <div class="field">
+                    <div class="user-label">Location<span class="required-lable">*</span></div>
+                    <input formControlName="location" class="input-text auth-input w-full" id="location" type="text"
+                        pInputText />
+                    <small *ngIf="f.location.errors && f.location.touched && f.location.invalid" class="p-invalid">
+                        <div *ngIf="f.location.errors.required" class="error-msg">Location is required</div>
+                    </small>
+                </div>
+
+                <div class="field">
+                    <div class="user-label">Address<span class="required-lable">*</span></div>
+                    <input formControlName="address" class="input-text auth-input w-full" id="address" type="text"
+                        pInputText />
+                    <small *ngIf="f.address.errors && f.address.touched && f.address.invalid" class="p-invalid">
+                        <div *ngIf="f.address.errors.required" class="error-msg">Address is required</div>
+                    </small>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-6">
+
+            <div class="flex flex-column">
+                <div class="field">
+                    <div class="user-label">Warehouse<span class="required-lable">*</span></div>
+                    <p-dropdown [options]="warehouseList" formControlName="warehouseId" [filter]="true" optionValue="id"
+                        optionLabel="location" filterBy="location" [showClear]="true" placeholder="Select a Warehouse">
+                    </p-dropdown>
+                    <small *ngIf="f.warehouseId.errors && f.warehouseId.touched && f.warehouseId.invalid"
+                        class="p-invalid">
+                        <div *ngIf="f.warehouseId.errors.required" class="error-msg">Warehouse is required</div>
+                    </small>
+                </div>
+                <div class="field">
+                    <div class="user-label">Contact<span class="required-lable">*</span></div>
+                    <input formControlName="phoneNumber" class="input-text auth-input w-full" id="phoneNumber"
+                        type="text" pInputText />
+                    <small *ngIf="f.phoneNumber.errors && f.phoneNumber.touched && f.phoneNumber.invalid"
+                        class="p-invalid">
+                        <div *ngIf="f.phoneNumber.errors.required" class="error-msg">PhoneNumber is required</div>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <div class="grid">
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- cancel button -->
+                <div class="flex justify-content-center md:justify-content-start align-items-center w-full">
+                    <p-button (click)="onCancel()" label="Cancel " styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- save Button -->
+                <div class="flex justify-content-center md:justify-content-end w-full align-items-center"
+                    *ngIf="!isDisable">
+                    <p-button type="submit" (click)="saveInfo()" label="Save Info" icon="pi pi-save"
+                        styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

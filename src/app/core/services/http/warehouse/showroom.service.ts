@@ -4,6 +4,8 @@ import { environment } from '../../../../../environments/environment.development
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { IPagination } from '../../../interfaces/pagination/page.interface';
 import { Observable, take } from 'rxjs';
+import { ICreateShowroom } from '../../../interfaces/warehouse/warehouse.interface';
+import { IShowroom } from '../../../interfaces/user/user.interface';
 
 const SHOW_ROOM_URL = environment.services.showroom
 @Injectable({
@@ -13,6 +15,21 @@ export class ShowroomService extends BaseService {
 
   constructor(protected override http: HttpClient) {
     super(http, SHOW_ROOM_URL);
+  }
+
+  // create showroom
+  create(createDto: ICreateShowroom): Observable<IShowroom | any> {
+    return this.post(createDto).pipe(take(1));
+  }
+
+  // update warehouse
+  public update(id: number, updateDto: ICreateShowroom): Observable<IShowroom> {
+    return this.http.put<IShowroom>(`${SHOW_ROOM_URL}/${id}`, updateDto).pipe(take(1));
+  }
+
+  // get warehouse by id
+  public getById(id: number): Observable<IShowroom> {
+    return this.getOne(id).pipe(take(1));
   }
 
   // get showroom list

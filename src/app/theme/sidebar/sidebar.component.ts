@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
 
     constructor(private readonly router: Router) { }
 
-    
+
     ngOnInit(): void {
         this.sideBar();
     }
@@ -47,7 +47,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Casheir',
                 icon: 'pi pi-desktop',
-                visible: this.sideBarTabVisible([Role.CASHIER,Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.CASHIER, Role.ADMIN]),
                 command: () => {
                     this.router.navigate(['terminal']);
                     this.sidebarVisible.set(false);
@@ -56,7 +56,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Dashboard',
                 icon: 'pi pi-chart-line',
-                visible: this.sideBarTabVisible([Role.DEFAULT,Role.CASHIER,Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.DEFAULT, Role.CASHIER, Role.ADMIN]),
                 command: () => {
                     this.router.navigate(['dashboard']);
                     this.sidebarVisible.set(false);
@@ -65,15 +65,23 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Warehouse',
                 icon: 'pi pi-home',
-                visible: this.sideBarTabVisible([Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 items: [
                     {
                         label: 'Warehouse',
                         icon: 'pi pi-home',
+                        command: () => {
+                            this.router.navigate(['warehouse']);
+                            this.sidebarVisible.set(false);
+                        }
                     },
                     {
                         label: 'Showroom',
                         icon: 'pi pi-shopping-cart',
+                        command: () => {
+                            this.router.navigate(['showroom']);
+                            this.sidebarVisible.set(false);
+                        }
                     },
                     {
                         label: 'Stock',
@@ -83,7 +91,7 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'User',
-                visible: this.sideBarTabVisible([Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 icon: 'pi pi-user-edit',
                 command: () => {
                     this.router.navigate(['user']);
@@ -93,7 +101,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Sale',
                 icon: 'pi pi-user',
-                visible: this.sideBarTabVisible([Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 items: [
                     {
                         label: 'Sales',
@@ -108,7 +116,7 @@ export class SidebarComponent implements OnInit {
             {
                 label: 'Items',
                 icon: 'pi pi-user',
-                visible: this.sideBarTabVisible([Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 items: [
                     {
                         label: 'Category',
@@ -122,12 +130,12 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'Customer',
-                visible: this.sideBarTabVisible([Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 icon: 'pi pi-envelope',
             },
             {
                 label: 'Reports',
-                visible: this.sideBarTabVisible([Role.ADMIN]),
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 icon: 'pi pi-envelope',
             }
         ];

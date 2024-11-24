@@ -13,7 +13,7 @@ export interface IUser {
     contacts?: IContacts[];
     showroom?: IShowroom;
     showroomId?: number;
-    phoneNumber?:string
+    phoneNumber?: string
 }
 
 
@@ -23,11 +23,13 @@ export interface IContacts {
 
 
 export interface IShowroom {
+    id?: number
     name?: string;
     address?: string;
     warehouseId?: number;
     location?: string;
     users?: IUser[];
+    phoneNumber?: string;
 }
 
 
@@ -43,5 +45,5 @@ export interface ICreateUserDto {
     showroomId: number;
     roles?: string[];
     status?: number;
-    phoneNumber?:string
+    phoneNumber?: string
 }

@@ -105,8 +105,8 @@
 
                 <div class="field">
                     <div class="user-label">Showroom<span class="required-lable">*</span></div>
-                    <p-dropdown [options]="showroomList" formControlName="showroom"  [filter]="true" optionValue="id" optionLabel="location" 
-                        filterBy="location" [showClear]="true" placeholder="Select a Showroom">
+                    <p-dropdown [options]="showroomList" formControlName="showroom" [filter]="true" optionValue="id"
+                        optionLabel="name" filterBy="location" [showClear]="true" placeholder="Select a Showroom">
                     </p-dropdown>
                     <small *ngIf="f.showroom.errors && f.showroom.touched && f.showroom.invalid" class="p-invalid">
                         <div *ngIf="f.showroom.errors.required" class="error-msg">Showroom is required</div>

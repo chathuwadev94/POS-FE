@@ -1,19 +1,20 @@
 export const environment = {
     production: false,
     apiBaseUrl: 'http://localhost:3000/v1/',
-    services :{
-        auth:'auth',
+    services: {
+        auth: 'auth',
         user: 'user',
-        stock:'stock',
-        item:'item',
-        sale:'sale',
-        showroom:'showroom',
+        stock: 'stock',
+        item: 'item',
+        sale: 'sale',
+        showroom: 'showroom',
+        warehouse: 'warehouse',
     },
-    cookies:{
-        authCookieName : 'AUTH_USER',
-       
+    cookies: {
+        authCookieName: 'AUTH_USER',
+
     },
-    localStorageKeys:{
-        cartKey:'CART'
+    localStorageKeys: {
+        cartKey: 'CART'
     }
 };
