@@ -34,7 +34,7 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/payment-terminal/payment-terminal.component').then(c => c.PaymentTerminalComponent),
                 canActivate: [RoleGuard],
                 data: {
-                    roles: [Role.DEFAULT, Role.CASHIRE]
+                    roles: [Role.DEFAULT, Role.CASHIER]
                 }
             },
             {
@@ -42,7 +42,15 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/dashboard/dashboard.component').then(c => c.DashboardComponent),
                 canActivate: [RoleGuard],
                 data: {
-                    roles: [Role.DEFAULT, Role.CASHIRE]
+                    roles: [Role.ADMIN]
+                }
+            },
+            {
+                path: 'user',
+                loadComponent: () => import('./pages/user/user.component').then(c => c.UserComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.ADMIN]
                 }
             }
         ]

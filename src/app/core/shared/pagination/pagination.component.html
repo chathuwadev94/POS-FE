@@ -1,0 +1,20 @@
+<div class="flex flex-colum md:flex-row lg:flex-row flex-grow-1 align-items-center pagination-bar ">
+    <div class="flex flex-grow-0 justify-content-start">
+        <label class="paginate-lbl">Showing {{ paginateOptions.firstIndex }} to {{ paginateOptions.lastIndex }} of
+            {{ paginateOptions.totalRecords }} entries</label>
+    </div>
+
+    <!-- shows Pages Drop Down-->
+    <!-- <div class="flex flex-grow-1 justify-content-start align-items-center pl-3">
+        <label>Show:&nbsp;</label>
+        <p-dropdown [options]="paginateOptions.pageRecordCountOptions"
+            [(ngModel)]="paginateOptions.selectedPageRecordCount" (onChange)="onChangePageLimit()"
+            styleClass="no-border-dropdown" placeholder="{{ filters.limit }}"></p-dropdown>
+    </div> -->
+
+    <div class="flex flex-grow-1 justify-content-end">
+        <p-paginator [rows]="filters.limit" [totalRecords]="paginateOptions.totalRecords" [showCurrentPageReport]="true"
+            (onPageChange)="onPageChange($event)">
+        </p-paginator>
+    </div>
+</div>

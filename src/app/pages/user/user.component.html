@@ -1,0 +1,85 @@
+<p-card class="p-card">
+
+    <div class="card card-inner">
+        <!-- table -->
+        <p-table #dt [value]="userList" [rows]="10" [globalFilterFields]="['title']" responsiveLayout="scroll"
+            [(selection)]="selectedUserList" [rowHover]="true" dataKey="id">
+
+            <!-- caption And Searchbar -->
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-end">
+                    <div class="flex flex-column md:flex-row lg:flex-row">
+                        <div class="flex justify-content-between flex-wrap mb-1 table-search">
+                            <div class="flex align-items-center justify-content-center">
+                                <label for="" class="search-label mr-2">Search :</label>
+                                <span class="p-input-icon-left">
+                                    <!-- <i class="pi pi-search"></i> -->
+                                    <input #search [(ngModel)]="selectedKeyword" type="text" pInputText
+                                        placeholder="NIC" class="search w-12rem"
+                                        (keyup.enter)="onEnterSearch(search.value)" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex  justify-content-center ml-3 mb-1">
+                            <p-button styleClass="action-btn" (onClick)="onClearSearch()" label="Clear"></p-button>
+                        </div>
+                        <div class="flex  justify-content-center ml-3">
+                            <p-button styleClass="action-btn" (onClick)="onAddUser()" label="Add User"></p-button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </ng-template>
+
+            <!-- table Header -->
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th pSortableColumn="title">NIC</th>
+                    <th pSortableColumn="campaignStatus">Contact</th>
+                    <th pSortableColumn="campaignStatus">Status</th>
+                    <th pSortableColumn="campaignStatus">Showroom</th>
+                    <th class="action-col">Action</th>
+                </tr>
+            </ng-template>
+
+            <!-- table Body -->
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td>{{user.firstName | lowercase}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.nic}}</td>
+                    <td>{{user?.contact}}</td>
+                    <td class="campaign-status">
+                        <span [class]="'user-staus-'+(user.status)">
+                            {{(user?.status == 0) ? 'Pending':(user?.status == 1)?'Approved' :'Hold'}}
+                        </span>
+
+                    </td>
+                    <td>{{user?.showroomI}}</td>
+                    <td>
+
+                        <p-button pTooltip="View User" class="action-btn mr-2" icon="pi pi-eye" tooltipPosition="bottom"
+                            tooltipStyleClass="p-tooltip" life:4000 (onClick)="onViewUser(user)" [text]="true"
+                            [raised]="true"></p-button>
+                        <p-button pTooltip="Edit User" class="action-btn mr-2" icon="pi pi-pencil"
+                            tooltipPosition="bottom" tooltipStyleClass="p-tooltip" life:4000
+                            (onClick)="onEditUser(user)" [text]="true" [raised]="true"></p-button>
+                        <p-button pTooltip="Reset Password" class="action-btn mr-2" icon="pi pi-refresh"
+                            tooltipPosition="bottom" tooltipStyleClass="p-tooltip" life:4000
+                            (onClick)="onViewUser(user)" [text]="true" [raised]="true"></p-button>
+
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+
+        <!-- pagination -->
+        <app-pagination [paginateOptions]="paginateOptions" [filters]="filters" (pageChanged)="fetchUserList()"
+            (pageLimitChanged)="fetchUserList()"></app-pagination>
+    </div>
+</p-card>

@@ -1,4 +1,5 @@
 import { IStock } from "../item/item-response.interface";
+import { IUser } from "../user/user.interface";
 
 export interface IWarehouse {
     id: number;
@@ -8,4 +9,14 @@ export interface IWarehouse {
     capacity: number;
     stocks: IStock[];
 
+}
+
+export interface IShowroom  {
+    id:number;
+    name?: string;
+    address?: string;
+    warehouseId?: number;
+    location?: string;
+    warehouse?: IWarehouse;
+    users?: IUser[];
 }
