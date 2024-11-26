@@ -12,11 +12,26 @@ export interface IItem {
     stock?: IStock
 }
 
+export interface ICreateItemDto {
+    name?: string;
+    description?: string;
+    cost?: number;
+    image?: string;
+    categoryId?: number;
+    manufactur?: string;
+    barcodeId?: number;
+}
+
 export interface ICategory {
-    id: number;
+    id?: number;
+    name?: string;
+    description?: string;
+    item?: IItem[];
+}
+
+export interface ICreateCategoryDto {
     name: string;
     description: string;
-    item: IItem[];
 }
 
 export interface IBarcode {
@@ -24,6 +39,13 @@ export interface IBarcode {
     code?: string;
     type?: number;
     item?: IItem;
+    typeName?: string;
+}
+
+export interface ICreateBarcodeDto {
+    code?: string;
+    type?: number;
+    typeName?: string;
 }
 
 export interface IStock {
@@ -40,6 +62,6 @@ export interface IStock {
 export interface ISaleItemDetails {
     itemId: number;
     qty: number;
-    stockId:number;
-    unitPrice:number;
+    stockId: number;
+    unitPrice: number;
 }

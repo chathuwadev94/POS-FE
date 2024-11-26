@@ -9,6 +9,8 @@ export const environment = {
         sale: 'sale',
         showroom: 'showroom',
         warehouse: 'warehouse',
+        category: 'category',
+        barcode: 'barcode'
     },
     cookies: {
         authCookieName: 'AUTH_USER',

@@ -68,6 +68,30 @@ export const routes: Routes = [
                 data: {
                     roles: [Role.SUPER_ADMIN, Role.ADMIN]
                 }
+            },
+            {
+                path: 'category',
+                loadComponent: () => import('./pages/item/category/category.component').then(c => c.CategoryComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
+                }
+            },
+            {
+                path: 'barcode',
+                loadComponent: () => import('./pages/item/barcode/barcode.component').then(c => c.BarcodeComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
+                }
+            },
+            {
+                path: 'item',
+                loadComponent: () => import('./pages/item/item/item.component').then(c => c.ItemComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
+                }
             }
         ]
     },

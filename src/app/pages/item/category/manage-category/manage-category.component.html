@@ -1,0 +1,56 @@
+<form [formGroup]="catForm" class="card card-inner padding-n col-padding-reset">
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-6">
+            <div class="flex flex-column">
+
+                <div class="field">
+                    <div class="user-label"> Name<span class="required-lable">*</span></div>
+                    <input formControlName="name" class="input-text auth-input w-full" id="name" type="text"
+                        pInputText />
+                    <small *ngIf="f.name.errors && f.name.touched && f.name.invalid" class="p-invalid">
+                        <div *ngIf="f.name.errors.required" class="error-msg"> Name is required</div>
+                    </small>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-6">
+
+            <div class="flex flex-column">
+                <div class="field">
+                    <div class="user-label">Description<span class="required-lable">*</span></div>
+                    <input formControlName="description" class="input-text auth-input w-full" id="description" type="text"
+                        pInputText />
+                    <small *ngIf="f.description.errors && f.description.touched && f.description.invalid" class="p-invalid">
+                        <div *ngIf="f.description.errors.required" class="error-msg">Description is required</div>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card-footer">
+        <div class="grid">
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- cancel button -->
+                <div class="flex justify-content-center md:justify-content-start align-items-center w-full">
+                    <p-button (click)="onCancel()" label="Cancel " styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- save Button -->
+                <div class="flex justify-content-center md:justify-content-end w-full align-items-center"
+                    *ngIf="!isDisable">
+                    <p-button type="submit" (click)="saveInfo()" label="Save Info" icon="pi pi-save"
+                        styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
