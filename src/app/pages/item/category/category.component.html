@@ -1,0 +1,69 @@
+<p-card class="p-card">
+
+    <div class="card card-inner">
+        <!-- table -->
+        <p-table #dt [value]="categoryList" [rows]="10" [globalFilterFields]="['title']" responsiveLayout="scroll"
+            [(selection)]="selectedCategoryList" [rowHover]="true" dataKey="id">
+
+            <!-- caption And Searchbar -->
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-end">
+                    <div class="flex flex-column md:flex-row lg:flex-row">
+                        <div class="flex justify-content-between flex-wrap mb-1 table-search">
+                            <div class="flex align-items-center justify-content-center">
+                                <label for="" class="search-label mr-2">Search :</label>
+                                <span class="p-input-icon-left">
+                                    <!-- <i class="pi pi-search"></i> -->
+                                    <input #search [(ngModel)]="selectedKeyword" type="text" pInputText
+                                        placeholder="Name" class="search w-12rem"
+                                        (keyup.enter)="onEnterSearch(search.value)" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex  justify-content-center ml-3 mb-1">
+                            <p-button styleClass="action-btn" (onClick)="onClearSearch()" label="Clear"></p-button>
+                        </div>
+                        <div class="flex  justify-content-center ml-3">
+                            <p-button styleClass="action-btn" (onClick)="onAdd()" label="Create"></p-button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </ng-template>
+
+            <!-- table Header -->
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th class="action-col">Action</th>
+                </tr>
+            </ng-template>
+
+            <!-- table Body -->
+            <ng-template pTemplate="body" let-category>
+                <tr>
+                    <td>{{category.id}}</td>
+                    <td>{{category.name}}</td>
+                    <td>{{category.description}}</td>
+                    <td>
+                        <p-button pTooltip="View User" class="action-btn mr-2" icon="pi pi-eye" tooltipPosition="bottom"
+                            tooltipStyleClass="p-tooltip" life:4000 (onClick)="onView(category)" [text]="true"
+                            [raised]="true"></p-button>
+                        <p-button pTooltip="Edit User" class="action-btn mr-2" icon="pi pi-pencil"
+                            tooltipPosition="bottom" tooltipStyleClass="p-tooltip" life:4000
+                            (onClick)="onEdit(category)" [text]="true" [raised]="true"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+
+        <!-- pagination -->
+        <app-pagination [paginateOptions]="paginateOptions" [filters]="filters" (pageChanged)="fetchCategoryList()"
+            (pageLimitChanged)="fetchCategoryList()"></app-pagination>
+    </div>
+</p-card>

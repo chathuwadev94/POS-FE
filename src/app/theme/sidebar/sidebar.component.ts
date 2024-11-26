@@ -99,6 +99,38 @@ export class SidebarComponent implements OnInit {
                 }
             },
             {
+                label: 'Items',
+                icon: 'pi pi-user',
+                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
+                items: [
+                    {
+                        label: 'Category',
+                        icon: 'pi pi-cog',
+                        command: () => {
+                            this.router.navigate(['category']);
+                            this.sidebarVisible.set(false);
+                        }
+                    },
+                    {
+                        label: 'Barcode',
+                        icon: 'pi pi-shield',
+                        command: () => {
+                            this.router.navigate(['barcode']);
+                            this.sidebarVisible.set(false);
+                        }
+                    },
+                    {
+                        label: 'Items',
+                        icon: 'pi pi-shield',
+                        command: () => {
+                            this.router.navigate(['item']);
+                            this.sidebarVisible.set(false);
+                        }
+                    },
+
+                ]
+            },
+            {
                 label: 'Sale',
                 icon: 'pi pi-user',
                 visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
@@ -109,21 +141,6 @@ export class SidebarComponent implements OnInit {
                     },
                     {
                         label: 'Sales Items',
-                        icon: 'pi pi-shield',
-                    }
-                ]
-            },
-            {
-                label: 'Items',
-                icon: 'pi pi-user',
-                visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
-                items: [
-                    {
-                        label: 'Category',
-                        icon: 'pi pi-cog',
-                    },
-                    {
-                        label: 'Items',
                         icon: 'pi pi-shield',
                     }
                 ]
