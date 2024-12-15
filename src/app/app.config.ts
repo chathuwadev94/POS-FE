@@ -14,7 +14,9 @@ import { tokenAttachInterceptor } from './core/interceptors/tocken-attach.interc
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes,withHashLocation()), 
+    provideRouter(routes
+      // withHashLocation()
+    ), 
     provideAnimations(),
      provideHttpClient(withInterceptors([
     apiBaseUrlInterceptor,

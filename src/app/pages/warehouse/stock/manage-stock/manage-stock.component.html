@@ -1,0 +1,191 @@
+<form [formGroup]="stockForm" class="card card-inner padding-n col-padding-reset">
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-6">
+
+            <div class="flex flex-column">
+                <div class="field">
+                    <div class="user-label">Warehouse<span class="required-lable">*</span></div>
+                    <p-dropdown [options]="warehouseList" formControlName="warehouseId" [filter]="true" optionValue="id"
+                        optionLabel="location" filterBy="location" [showClear]="true" placeholder="Select a Warehouse">
+                    </p-dropdown>
+                    <small *ngIf="f.warehouseId.errors && f.warehouseId.touched && f.warehouseId.invalid"
+                        class="p-invalid">
+                        <div *ngIf="f.warehouseId.errors.required" class="error-msg">Warehouse is required</div>
+                    </small>
+                </div>
+               
+            </div>
+            <div class="flex flex-column">
+
+                <div class="field">
+                    <div class="user-label"> Quantity<span class="required-lable">*</span></div>
+                    <input formControlName="qty" class="input-text auth-input w-full" id="qty" type="number"
+                        pInputText />
+                    <small *ngIf="f.qty.errors && f.qty.touched && f.qty.invalid" class="p-invalid">
+                        <div *ngIf="f.qty.errors.required" class="error-msg"> Quantity is required</div>
+                    </small>
+                </div>
+
+                <div class="field">
+                    <div class="user-label">Unit Price<span class="required-lable">*</span></div>
+                    <input formControlName="unitPrice" class="input-text auth-input w-full" id="unitPrice" type="number"
+                        pInputText />
+                    <small *ngIf="f.unitPrice.errors && f.unitPrice.touched && f.unitPrice.invalid" class="p-invalid">
+                        <div *ngIf="f.unitPrice.errors.required" class="error-msg">Unit Price is required</div>
+                    </small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12 md:col-6 lg:col-6" *ngIf="isVisible">
+           
+
+            <div class="field" >
+                <div class="user-label">Item<span class="required-lable">*</span></div>
+                <p-dropdown [options]="selectedItemList" formControlName="itemId" [filter]="true" optionValue="id"
+                    optionLabel="name" filterBy="name" [showClear]="true" placeholder="Select a Item">
+                </p-dropdown>
+                <small *ngIf="f.itemId.errors && f.itemId.touched && f.itemId.invalid"
+                    class="p-invalid">
+                    <div *ngIf="f.itemId.errors.required" class="error-msg">Item is required</div>
+                </small>
+            </div>
+            <div class="grid">
+                <div class="col-12 md:col-6 justify-content-center align-content-center">
+                  <p-card class="transparent-card">
+                    <div class="field">
+                      <p-floatLabel>
+                        <p-autoComplete [(ngModel)]="selectedItemKey" [ngModelOptions]="{standalone: true}" [suggestions]="suggestions" (completeMethod)="search($event)"
+                          class="block" (keydown.enter)="onKeydown($event)" />
+                        <label for="number-input">Barcode</label>
+                      </p-floatLabel>
+                    </div>
+                  </p-card>
+              
+                </div>
+                <div class="col-12 md:col-6">
+                  <p-card class="scanner-transparent-card">
+                    <div class="scanner-container">
+                      <zxing-scanner (camerasFound)="onCamerasFound($event)" (scanSuccess)="onBarcodeScanned($event)"
+                        [formats]="allowedFormats"></zxing-scanner>
+                    </div>
+                  </p-card>
+                </div>
+              </div>
+        </div>
+
+        <!-- <div class="col-12 md:col-12 lg:col-12">
+            <div class="grid col-12">
+                <p-card class=" col-6 summary-transparent-card">
+                    <div class="flex flex-row">
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-lbl">Item Id : </h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-lbl">Item Name :</h2>
+                            </div>
+                        </div>
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock.id}}</h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock.item?.name}}</h2>
+                            </div>
+                        </div>
+
+
+
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-lbl">Item Code : </h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-lbl">Item Manufacture :</h2>
+                            </div>
+                        </div>
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-val  flex justify-content-center">{{selectedStock.id}}</h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock.item.manufactur}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </p-card>
+
+
+
+                <p-card class=" col-6 summary-transparent-card">
+                    <div class="flex flex-row">
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-lbl">Warehouse Id : </h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-lbl">Warehouse Name :</h2>
+                            </div>
+                        </div>
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock.warehouse?.id}}</h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock?.warehouse?.name}}</h2>
+                            </div>
+                        </div>
+
+
+
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-lbl">Warehouse Address : </h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-lbl">Item Location :</h2>
+                            </div>
+                        </div>
+                        <div class="flex flex-column">
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock?.warehouse?.address}}</h2>
+                            </div>
+                            <div>
+                                <h2 class="summary-val flex justify-content-center">{{selectedStock?.warehouse?.location}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </p-card>
+            </div>
+
+        </div> -->
+   
+       
+   
+    </div>
+
+
+    <div class="card-footer">
+        <div class="grid">
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- cancel button -->
+                <div class="flex justify-content-center md:justify-content-start align-items-center w-full">
+                    <p-button (click)="onCancel()" label="Cancel " styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+                <!-- save Button -->
+                <div class="flex justify-content-center md:justify-content-end w-full align-items-center"
+                    *ngIf="!isDisable">
+                    <p-button type="submit" (click)="saveInfo()" label="Save Info" icon="pi pi-save"
+                        styleClass="usr-add-p-btn">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

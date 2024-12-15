@@ -4,6 +4,12 @@
     </div>
     <div class="col-12 body-layout">
         <p-card class="transparent-card">
+            <div class="card flex justify-content-start">
+                <p-breadcrumb 
+                    class="max-w-full" 
+                    [model]="items" 
+                    [home]="home" />
+            </div>
             <p class="m-10">
                 <router-outlet></router-outlet>
             </p>

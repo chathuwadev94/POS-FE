@@ -1,4 +1,4 @@
-import { IWarehouse } from "../warehouse/warehouse.interface";
+import { IStock } from "../stock/stock.interface";
 
 export interface IItem {
     id: number;
@@ -48,16 +48,6 @@ export interface ICreateBarcodeDto {
     typeName?: string;
 }
 
-export interface IStock {
-    id: number;
-    qty?: number;
-    warehouseId?: number;
-    itemId: number;
-    status?: number;
-    warehouse?: IWarehouse;
-    item: IItem;
-    unitPrice: number;
-}
 
 export interface ISaleItemDetails {
     itemId: number;

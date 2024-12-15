@@ -8,7 +8,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ItemService } from '../../../core/services/http/item/item.service';
 import { SpinnerService } from '../../../core/services/toast-message/spinner.service';
 import { ToastMessageService } from '../../../core/services/toast-message/toast-message.service';
-import { IStock } from '../../../core/interfaces/item/item-response.interface';
 
 @Component({
   selector: 'app-item-list-terminal',
@@ -37,7 +36,6 @@ export class ItemListTerminalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('netCarts', this.cartStore.netCartList());
   }
 
   editProduct(item: ICartItem) {
