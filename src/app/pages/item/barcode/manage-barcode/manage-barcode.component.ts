@@ -163,9 +163,9 @@ export class ManageBarcodeComponent implements OnInit {
   }
 
   onBarcodeScanned(result: string): void {
-    this.bCodeForm.patchValue({
-      code: result,
-    })
+      this.bCodeForm.patchValue({
+        code: result,
+      })
 
   }
 

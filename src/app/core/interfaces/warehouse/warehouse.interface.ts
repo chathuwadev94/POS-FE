@@ -1,4 +1,4 @@
-import { IStock } from "../item/item-response.interface";
+import { IStock } from "../stock/stock.interface";
 import { IUser } from "../user/user.interface";
 
 export interface IWarehouse {

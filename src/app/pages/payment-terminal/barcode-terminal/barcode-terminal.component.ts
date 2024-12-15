@@ -12,7 +12,7 @@ import { ToastMessageService } from '../../../core/services/toast-message/toast-
 import { catchError, of, take, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CartStore, ICartItem } from '../../../core/signal-store/cart.store';
-import { IStock } from '../../../core/interfaces/item/item-response.interface';
+import { IStock } from '../../../core/interfaces/stock/stock.interface';
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;

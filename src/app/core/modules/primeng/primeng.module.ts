@@ -49,6 +49,7 @@ import { RippleModule } from 'primeng/ripple';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { PaginatorModule } from 'primeng/paginator';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 const primeItems = [
   InputTextModule,
@@ -99,7 +100,8 @@ const primeItems = [
   BadgeModule, RippleModule,
   FloatLabelModule,
   AutoCompleteModule,
-  PaginatorModule
+  PaginatorModule,
+  SplitButtonModule
 
 ]
 

@@ -64,12 +64,12 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'Warehouse',
-                icon: 'pi pi-home',
+                icon: 'pi pi-warehouse',
                 visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 items: [
                     {
                         label: 'Warehouse',
-                        icon: 'pi pi-home',
+                        icon: 'pi pi-warehouse',
                         command: () => {
                             this.router.navigate(['warehouse']);
                             this.sidebarVisible.set(false);
@@ -77,7 +77,7 @@ export class SidebarComponent implements OnInit {
                     },
                     {
                         label: 'Showroom',
-                        icon: 'pi pi-shopping-cart',
+                        icon: 'pi pi-shop',
                         command: () => {
                             this.router.navigate(['showroom']);
                             this.sidebarVisible.set(false);
@@ -85,7 +85,11 @@ export class SidebarComponent implements OnInit {
                     },
                     {
                         label: 'Stock',
-                        icon: 'pi pi-shopping-cart',
+                        icon: 'pi pi-server',
+                        command: () => {
+                            this.router.navigate(['stock']);
+                            this.sidebarVisible.set(false);
+                        }
                     }
                 ]
             },
@@ -100,12 +104,12 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'Items',
-                icon: 'pi pi-user',
+                icon: 'pi pi-objects-column',
                 visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 items: [
                     {
                         label: 'Category',
-                        icon: 'pi pi-cog',
+                        icon: 'pi pi-list',
                         command: () => {
                             this.router.navigate(['category']);
                             this.sidebarVisible.set(false);
@@ -113,7 +117,7 @@ export class SidebarComponent implements OnInit {
                     },
                     {
                         label: 'Barcode',
-                        icon: 'pi pi-shield',
+                        icon: 'pi pi-barcode',
                         command: () => {
                             this.router.navigate(['barcode']);
                             this.sidebarVisible.set(false);
@@ -121,7 +125,7 @@ export class SidebarComponent implements OnInit {
                     },
                     {
                         label: 'Items',
-                        icon: 'pi pi-shield',
+                        icon: 'pi pi-objects-column',
                         command: () => {
                             this.router.navigate(['item']);
                             this.sidebarVisible.set(false);
@@ -132,28 +136,28 @@ export class SidebarComponent implements OnInit {
             },
             {
                 label: 'Sale',
-                icon: 'pi pi-user',
+                icon: 'pi pi-cart-plus',
                 visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
                 items: [
                     {
                         label: 'Sales',
-                        icon: 'pi pi-cog',
+                        icon: 'pi pi-cart-plus',
                     },
                     {
                         label: 'Sales Items',
-                        icon: 'pi pi-shield',
+                        icon: 'pi pi-cart-arrow-down',
                     }
                 ]
             },
             {
                 label: 'Customer',
                 visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
-                icon: 'pi pi-envelope',
+                icon: 'pi pi-users',
             },
             {
                 label: 'Reports',
                 visible: this.sideBarTabVisible([Role.SUPER_ADMIN, Role.ADMIN]),
-                icon: 'pi pi-envelope',
+                icon: 'pi pi-clipboard',
             }
         ];
     }

@@ -36,7 +36,7 @@ import { environment } from '../../../environments/environment.development';
 export class SignInComponent implements OnInit {
 
   signInForm: FormGroup = new FormGroup({});
-  shopName: string = 'K Super Mart';
+  shopName: string = 'Super Mart';
   loggedInUser = signal<ILoginResponse | undefined>(undefined)
   user$!: Observable<IUser | undefined>;
 

@@ -92,6 +92,14 @@ export const routes: Routes = [
                 data: {
                     roles: [Role.SUPER_ADMIN, Role.ADMIN]
                 }
+            },
+            {
+                path: 'stock',
+                loadComponent: () => import('./pages/warehouse/stock/stock.component').then(c => c.StockComponent),
+                canActivate: [RoleGuard],
+                data: {
+                    roles: [Role.SUPER_ADMIN, Role.ADMIN]
+                }
             }
         ]
     },

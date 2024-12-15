@@ -1,0 +1,66 @@
+@import '../../../../assets/styles/variable.scss';
+
+.card {
+    min-height: 540px;
+}
+
+:host ::ng-deep .p-button {
+
+    background-color: $button-color;
+    border: 1px solid #f0f7f2;
+
+    .p-button-success.p-button-outlined {
+        color: white;
+        border: 1px solid;
+        background-color: $button-color;
+    }
+
+    :hover {
+        background-color: $button-color;
+    }
+
+
+
+}
+
+:host ::ng-deep .action-btn {
+    width: 120px;
+}
+
+:host ::ng-deep .p-button-text {
+    color: #fdfafa;
+}
+
+:host ::ng-deep .p-button.p-button-danger.p-button-outlined {
+    color: white;
+    border: 1px solid;
+    background-color: #ef4444;
+}
+
+:host ::ng-deep .p-datatable {
+
+    min-height: 540px;
+    font-size: 14px;
+
+    .p-datatable-thead>tr {
+        height: 2px;
+    }
+
+    .p-datatable-tbody>tr>td {
+        padding: 0.25rem 1rem;
+        height: 20px;
+    }
+
+}
+
+.user-staus-0 {
+    color: #601edc;
+}
+
+.user-staus-1 {
+    color: #09783d;
+}
+
+.user-staus-2 {
+    color: #c71d1d;
+}
